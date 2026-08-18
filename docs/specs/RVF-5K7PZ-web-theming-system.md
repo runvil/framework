@@ -1,21 +1,22 @@
-# Specification — Runvil Web Theming System
+# Specification — Runvil UI Theming System
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
 | SpecID      | RVF-5K7PZ                                   |
-| Title       | Runvil Web Theming System                  |
+| Title       | Runvil UI Theming System                    |
 | Status      | Draft                                       |
-| Version     | 0.2.0                                       |
+| Version     | 0.3.0                                       |
 | Date        | 2026-08-18                                  |
 | Author      | Runvil Contributors                         |
-| Domain      | Frameworks — Web                            |
+| Domain      | Frameworks — UI                             |
 
 ## 1. Context
 
-The Runvil web framework ships a small theming system for static sites: a
-configurable `Theme` type that emits an inline script and a toggle button.
-Sites follow the system color scheme by default, let users switch between
-light and dark, and remember the choice without any server round-trip.
+The theming system is shipped from the Runvil UI Framework (`framework/ui`) as
+`ui.Theme`, `ui.Palette`, and `ui.Color`. It emits an inline script and a
+toggle button for static sites. Sites follow the system color scheme by
+default, let users switch between light and dark, and remember the choice
+without any server round-trip.
 
 ## 2. Problem Statement
 
@@ -48,7 +49,7 @@ the same toggle.
 | FRK-TH-004 | Expose a toggle on `window.runvilTheme` and wire any element with `data-theme-toggle`. | Must |
 | FRK-TH-005 | Provide ready-made toggle button markup (`Theme.Button`).          | Must |
 | FRK-TH-006 | Keep the `color-scheme` meta element in sync with the applied theme. | Must |
-| FRK-TH-007 | Provide a configurable palette (`web.Palette`) for light and dark modes with the base, primary, secondary, accent, ghost, neutral, and semantic colors, each with a `*-content` companion. | Must |
+| FRK-TH-007 | Provide a configurable palette (`ui.Palette`) for light and dark modes with the base, primary, secondary, accent, ghost, neutral, and semantic colors, each with a `*-content` companion. | Must |
 | FRK-TH-008 | The palette is emitted as CSS custom properties (`--base-1`, `--primary-content`, …) scoped to `:root` for light and `:root[data-theme="dark"]` for dark. | Must |
 | FRK-TH-009 | Empty palette fields fall back to the shipped default palettes, so sites may override a single color. | Must |
 | FRK-TH-010 | Ship complete `DefaultLightPalette` and `DefaultDarkPalette` values covering all tokens. | Must |
@@ -71,6 +72,7 @@ the same toggle.
 
 | SpecID    | Title                                           |
 | --------- | ----------------------------------------------- |
+| [RVF-HQ7XW](./RVF-HQ7XW-runvil-ui-framework.md) | Runvil UI Framework (ships this system) |
 | [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md) | Runvil Web Framework             |
 | [RVM-5F9TL](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-5F9TL-mdbind-site-builder.md) | mdbind Site Builder |
 

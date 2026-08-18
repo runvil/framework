@@ -1,9 +1,8 @@
-// Package web provides the Runvil web framework: a routing and rendering
-// layer built on the Go standard library's net/http and html/template.
-//
-// Pages are defined as routes, rendered through templates, and can be served
-// live over HTTP or exported to a directory as a complete static website.
-package web
+// Package ui provides the Runvil UI Framework: shared, reusable styling
+// primitives for the web ecosystem. It owns the light/dark theming system —
+// color palettes, the toggle runtime, and the toggle styles — so that sites
+// and builders never hardcode theme markup or CSS.
+package ui
 
 import (
 	"html/template"

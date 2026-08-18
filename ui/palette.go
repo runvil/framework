@@ -1,5 +1,5 @@
 // Palette is a named color schema for a single mode (light or dark).
-package web
+package ui
 
 import (
 	"reflect"
