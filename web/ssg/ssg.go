@@ -374,6 +374,13 @@ func scopeFragment(name, body string) (template.HTML, error) {
 	if target == nil {
 		return template.HTML(body), nil
 	}
+	for _, a := range target.Attr {
+		if a.Key == "data-rv-component" {
+			// Root already carries a scope attribute from a nested
+			// component; this wrapper has no markup of its own.
+			return template.HTML(body), nil
+		}
+	}
 	target.Attr = append(target.Attr, html.Attribute{Key: "data-rv-component", Val: name})
 	var buf bytes.Buffer
 	for _, n := range frag {
