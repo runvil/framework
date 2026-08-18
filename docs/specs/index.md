@@ -13,6 +13,7 @@ This directory holds the formal specifications for the Runvil Framework.
 | [RVF-EHVF8](./RVF-EHVF8-cli-scaffolding.md)         | CLI Scaffolding                          | Draft | 0.1.0 |
 | [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md)     | Runvil Web Framework                     | Draft | 0.1.0 |
 | [RVF-5K7PZ](./RVF-5K7PZ-web-theming-system.md)        | Web Theming System                       | Draft | 0.1.0 |
+| [RVF-PN41Q](./RVF-PN41Q-static-site-generator.md)     | Static Site Generator                    | Draft | 0.1.0 |
 
 ## Conventions
 

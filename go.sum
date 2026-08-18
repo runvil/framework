@@ -1,2 +1,4 @@
 github.com/runvil/libs v0.1.0 h1:YL7LP3wu2OGTz9vSCkRZzeGYBfEXuKrv7bYZ64YdJ/8=
 github.com/runvil/libs v0.1.0/go.mod h1:s6545EmOSMtKsyW6wFf5PAKsDu5xw1C8aWDdDzC/kxc=
+golang.org/x/net v0.30.0 h1:AcW1SDZMkb8IpzCdQUaIq2sP4sZ4zw+55h6ynffypl4=
+golang.org/x/net v0.30.0/go.mod h1:2wGyMJ5iFasEhkwi13ChkO/t1ECNC4X4eBKkVFyYFlU=
