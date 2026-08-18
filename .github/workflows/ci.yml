@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: runvil-framework
+      - uses: actions/checkout@v4
+        with:
+          repository: runvil/runvil-libs
+          path: runvil-libs
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "stable"
+      - name: Format
+        run: test -z "$(gofmt -l .)"
+        working-directory: runvil-framework
+      - name: Vet
+        run: go vet ./...
+        working-directory: runvil-framework
+      - name: Test
+        run: go test ./...
+        working-directory: runvil-framework
