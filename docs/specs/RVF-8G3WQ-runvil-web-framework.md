@@ -95,6 +95,7 @@ and site builders cannot share a common static-export primitive.
 
 | SpecID    | Title                                           |
 | --------- | ----------------------------------------------- |
+| [RVF-5K7PZ](./RVF-5K7PZ-web-theming-system.md)        | Web Theming System               |
 | [RVF-M8SSR](./RVF-M8SSR-cli-application-model.md) | CLI Application Model                |
 | [RVF-WXQQ5](./RVF-WXQQ5-cli-output-formatting.md) | CLI Output & Formatting              |
 | [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) | Runvil Meta-Framework                |
