@@ -33,7 +33,8 @@ Shared primitives and terminal utilities are provided by the [`runvil-libs`](htt
 ### Prerequisites
 
 - Go toolchain 1.22 or newer — see [go.dev/dl](https://go.dev/dl/)
-- A checkout of `runvil-libs` as a sibling directory (referenced via a `replace` directive in `go.mod`)
+
+The framework depends on the published `github.com/runvil/runvil-libs` module (fetched via its git URL); no local checkout is required.
 
 ### Building
 

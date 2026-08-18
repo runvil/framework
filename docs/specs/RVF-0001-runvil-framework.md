@@ -26,7 +26,7 @@ dependencies; Runvil does not re-implement them.
 
 - Module root `github.com/runvil/runvil-framework` with the `framework/` meta-package as the entry point.
 - `cli/` provides the integrated command-line application model.
-- The module references `runvil-libs` via a `replace` directive pointing to a sibling checkout.
+- The module depends on `github.com/runvil/runvil-libs` v0.1.0, fetched from its git URL.
 - Shared module root: Go 1.22, MIT license.
 
 ## 2. Goals
@@ -77,7 +77,7 @@ library) into an integrated developer experience.
 
 - C1 — The module is a Go monorepo; the `framework` meta-package is the public entry point.
 - C2 — Dependencies point **one direction only**: framework packages → `runvil-libs` packages; cyclic dependencies are prohibited.
-- C3 — `runvil-libs` packages are referenced via a `replace` directive for local development, resolved to published versions during releases.
+- C3 — `runvil-libs` packages are referenced by module version (e.g. `github.com/runvil/runvil-libs@v0.1.0`) fetched from its git URL; a local `replace` directive may be used during development.
 - C4 — Each package is versioned **independently**; the module root defines the shared language version and license.
 - C5 — The `unsafe` package must not be used; all exported identifiers must be documented.
 - C6 — New capabilities are introduced as additive packages; breaking changes are not allowed in minor/patch releases.
