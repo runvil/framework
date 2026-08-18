@@ -5,7 +5,7 @@
 | SpecID      | RVF-5K7PZ                                   |
 | Title       | Runvil Web Theming System                  |
 | Status      | Draft                                       |
-| Version     | 0.1.0                                       |
+| Version     | 0.2.0                                       |
 | Date        | 2026-08-18                                  |
 | Author      | Runvil Contributors                         |
 | Domain      | Frameworks — Web                            |
@@ -30,11 +30,13 @@ the same toggle.
 - G2 — Persist the user's choice across visits.
 - G3 — Apply the theme before first paint, avoiding a flash of the wrong mode.
 - G4 — Ship a ready-made toggle button wired by the script.
+- G5 — Let sites configure the full color palette for light and dark modes.
 
 ## 4. Non-Goals
 
 - NG1 — Server-side theming, cookies, or themes beyond light/dark.
 - NG2 — Theme-aware image generation or color transformation.
+- NG3 — Runtime palette editing; palettes are compiled into the site at build time.
 
 ## 5. Requirements
 
@@ -46,6 +48,10 @@ the same toggle.
 | FRK-TH-004 | Expose a toggle on `window.runvilTheme` and wire any element with `data-theme-toggle`. | Must |
 | FRK-TH-005 | Provide ready-made toggle button markup (`Theme.Button`).          | Must |
 | FRK-TH-006 | Keep the `color-scheme` meta element in sync with the applied theme. | Must |
+| FRK-TH-007 | Provide a configurable palette (`web.Palette`) for light and dark modes with the base, primary, secondary, accent, ghost, neutral, and semantic colors, each with a `*-content` companion. | Must |
+| FRK-TH-008 | The palette is emitted as CSS custom properties (`--base-1`, `--primary-content`, …) scoped to `:root` for light and `:root[data-theme="dark"]` for dark. | Must |
+| FRK-TH-009 | Empty palette fields fall back to the shipped default palettes, so sites may override a single color. | Must |
+| FRK-TH-010 | Ship complete `DefaultLightPalette` and `DefaultDarkPalette` values covering all tokens. | Must |
 
 ## 6. Non-Functional Requirements
 
@@ -59,6 +65,7 @@ the same toggle.
 - S1 — `Theme{}.Script()` and `Theme{}.Button()` render embeddable markup.
 - S2 — The script reads `localStorage`, follows the system scheme for `auto`, and wires `data-theme-toggle`.
 - S3 — A site built with the theme renders before first paint without a wrong-theme flash.
+- S4 — Setting `Theme{Light: Palette{Primary: "…"}}` overrides the token in the emitted style while the rest falls back to defaults.
 
 ## 8. Related Specifications
 

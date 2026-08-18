@@ -11,7 +11,7 @@ const (
 	// Name is the canonical display name of the Runvil framework.
 	Name = "Runvil Framework"
 	// Version is the semantic version of the framework.
-	Version = "0.1.0"
+	Version = "0.3.0"
 )
 
 // Banner returns the framework banner identifying the current framework

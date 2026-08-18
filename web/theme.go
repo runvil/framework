@@ -24,6 +24,12 @@ type Theme struct {
 	// Default is the initial preference when nothing is stored:
 	// "auto", "light", or "dark". Defaults to "auto".
 	Default string
+	// Light is the color palette for light mode. Empty fields fall back to
+	// DefaultLightPalette.
+	Light Palette
+	// Dark is the color palette for dark mode. Empty fields fall back to
+	// DefaultDarkPalette.
+	Dark Palette
 }
 
 func (t Theme) storageKey() string {
@@ -42,12 +48,26 @@ func (t Theme) defaultTheme() string {
 	}
 }
 
-// Script returns the inline <script> block for the document head. It applies
-// the stored or system theme before first paint (avoiding a flash of the wrong
-// theme), keeps the color-scheme meta in sync, and wires any element carrying
-// the data-theme-toggle attribute to cycle light and dark modes.
+// Style returns the <style> block declaring the color palette as CSS custom
+// properties on :root (light) and :root[data-theme="dark"] (dark), plus the
+// system-scheme fallback for pages without the attribute before the script
+// runs. Consumers may reference the tokens as var(--base-1),
+// var(--primary-content), and so on.
+func (t Theme) Style() template.CSS {
+	light := ":root{" + t.Light.cssVars(DefaultLightPalette) + "}"
+	dark := ":root[data-theme=\"dark\"]{" + t.Dark.cssVars(DefaultDarkPalette) + "}"
+	fallback := "@media (prefers-color-scheme: dark){:root:not([data-theme]){" +
+		t.Dark.cssVars(DefaultDarkPalette) + "}}"
+	return template.CSS("<style>" + light + dark + fallback + "</style>")
+}
+
+// Script returns the inline <script> block for the document head, preceded by
+// the palette style. It applies the stored or system theme before first paint
+// (avoiding a flash of the wrong theme), keeps the color-scheme meta in sync,
+// and wires any element carrying the data-theme-toggle attribute to cycle
+// light and dark modes.
 func (t Theme) Script() template.HTML {
-	return template.HTML("<script>" + themeJS(t.storageKey(), t.defaultTheme()) + "</script>")
+	return template.HTML(string(t.Style()) + "<script>" + themeJS(t.storageKey(), t.defaultTheme()) + "</script>")
 }
 
 // Button returns the theme-switcher button markup: a sun/moon toggle that the
