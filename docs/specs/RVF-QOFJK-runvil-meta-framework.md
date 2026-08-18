@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-0001                                    |
+| SpecID      | RVF-QOFJK                                   |
 | Title       | Runvil Meta-Framework — Initial Specification |
 | Status      | Draft                                       |
 | Version     | 0.1.0                                       |
@@ -111,8 +111,19 @@ The architecture must accommodate, in order of priority:
 
 Each phase is additive and must not break the previous phases.
 
-## 9. References
+## 9. Related Specifications
 
-- [Runvil Libraries — RVL-0001](https://github.com/runvil/runvil-libs/blob/main/docs/specs/RVL-0001-runvil-libs.md) — Initial specification for the Runvil Libraries monorepo.
+| SpecID    | Title                                           |
+| --------- | ----------------------------------------------- |
+| [RVF-M8SSR](./RVF-M8SSR-cli-application-model.md) | CLI Application Model                |
+| [RVF-LJWEB](./RVF-LJWEB-cli-help-usage.md)         | CLI Help & Usage                     |
+| [RVF-WXQQ5](./RVF-WXQQ5-cli-output-formatting.md) | CLI Output & Formatting              |
+| [RVF-QZTY2](./RVF-QZTY2-cli-errors-diagnostics.md) | CLI Errors & Diagnostics             |
+| [RVF-UUQ3X](./RVF-UUQ3X-cli-configuration.md)     | CLI Configuration                    |
+| [RVF-EHVF8](./RVF-EHVF8-cli-scaffolding.md)       | CLI Scaffolding                      |
+
+## 10. References
+
+- [Runvil Libraries — RVL-4Y8UP](https://github.com/runvil/runvil-libs/blob/main/docs/specs/RVL-4Y8UP-runvil-libraries.md) — Initial specification for the Runvil Libraries monorepo.
 - [runvil-libs](https://github.com/runvil/runvil-libs) — modular reusable libraries hosting `core` and `term`.
 - Project `README.md` for building and testing instructions.

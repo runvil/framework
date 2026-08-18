@@ -1,0 +1,67 @@
+# Specification — CLI Help & Usage
+
+| Field       | Value                                       |
+| ----------- | ------------------------------------------- |
+| SpecID      | RVF-LJWEB                                   |
+| Title       | CLI Help & Usage                            |
+| Status      | Draft                                       |
+| Version     | 0.1.0                                       |
+| Date        | 2026-08-18                                  |
+| Author      | Runvil Contributors                         |
+| Domain      | Frameworks — CLI                            |
+
+## 1. Context
+
+Help and usage output is a first-class part of a CLI's usability. This
+specification defines how Runvil CLI commands expose help: an explicit `help`
+sub-command, automatic `-h`/`--help`, and consistent usage text rendered
+through `term`.
+
+## 2. Goals
+
+- G1 — Provide consistent, predictable help output across all commands.
+- G2 — Make help available at every level of a command hierarchy.
+- G3 — Render help through the `term` conventions (colors degrade gracefully).
+
+## 3. Non-Goals
+
+- NG1 — Downloadable man pages or shell completions in the initial phase.
+- NG2 — Web-based documentation generation.
+- NG3 — Localized/translated help strings.
+
+## 4. Requirements
+
+| ID         | Requirement                                                       | Priority |
+| ---------- | ----------------------------------------------------------------- | -------- |
+| FRK-HP-001 | Provide automatic `-h` and `--help` handling for every command.   | Must     |
+| FRK-HP-002 | Provide an explicit `help [command...]` sub-command.              | Must     |
+| FRK-HP-003 | Top-level help lists the application version, usage line, and commands. | Must |
+| FRK-HP-004 | Per-command help lists its options, arguments, and description.   | Must     |
+| FRK-HP-005 | Unknown command help requests resolve to the help exit code (2).  | Must     |
+| FRK-HP-006 | Help text is derived from command/flag definitions, not hand-authored strings. | Should |
+| FRK-HP-007 | Help output honors the `term` color policy (plain text when unsupported). | Must |
+
+## 5. Non-Functional Requirements
+
+- NFR1 — **Memory safety.** The `unsafe` package must not be used.
+- NFR2 — **Performance.** Help generation must stay near-instant.
+- NFR3 — **Portability.** Linux, macOS, and Windows.
+- NFR4 — **Quality gates.** `gofmt`, `go vet ./...`, and `go test ./...` must pass.
+
+## 6. Success Criteria
+
+- S1 — `help` and `-h` produce equivalent, deterministic output for a given app.
+- S2 — Nested-command help is reachable and correct.
+- S3 — Help output contains no escape sequences when colors are disabled.
+
+## 7. Related Specifications
+
+| SpecID    | Title                                           |
+| --------- | ----------------------------------------------- |
+| [RVF-M8SSR](./RVF-M8SSR-cli-application-model.md) | CLI Application Model                |
+| [RVF-WXQQ5](./RVF-WXQQ5-cli-output-formatting.md) | CLI Output & Formatting             |
+| [RVL-N459G](https://github.com/runvil/runvil-libs/blob/main/docs/specs/RVL-N459G-terminal-io-rendering.md) | Terminal I/O & Rendering            |
+
+## 8. References
+
+- [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.
