@@ -11,6 +11,7 @@ This directory holds the formal specifications for the Runvil Framework.
 | [RVF-QZTY2](./RVF-QZTY2-cli-errors-diagnostics.md) | CLI Errors & Diagnostics                  | Draft | 0.1.0 |
 | [RVF-UUQ3X](./RVF-UUQ3X-cli-configuration.md)       | CLI Configuration                        | Draft | 0.1.0 |
 | [RVF-EHVF8](./RVF-EHVF8-cli-scaffolding.md)         | CLI Scaffolding                          | Draft | 0.1.0 |
+| [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md)     | Runvil Web Framework                     | Draft | 0.1.0 |
 
 ## Conventions
 
