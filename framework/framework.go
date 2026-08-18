@@ -8,8 +8,8 @@ package framework
 import "fmt"
 
 const (
-	// Name is the canonical name of the Runvil framework.
-	Name = "framework"
+	// Name is the canonical display name of the Runvil framework.
+	Name = "Runvil Framework"
 	// Version is the semantic version of the framework.
 	Version = "0.1.0"
 )
