@@ -6,7 +6,11 @@ import "strings"
 // recurses into @media/@supports/@layer blocks. Rules that begin with :root
 // (or any selector containing :root) are left global as an escape hatch, as
 // are @keyframes, @font-face, @import, and @charset at-rules.
-func scopeCSS(scope, css string) string {
+//
+// When compound is true, simple selectors are also emitted compounded with
+// the scope (e.g. .x -> "[scope] .x, [scope].x") so the component's own root
+// element, which carries the scope attribute, is styled as well.
+func scopeCSS(scope, css string, compound bool) string {
 	var out strings.Builder
 	rest := css
 	for rest != "" {
@@ -27,15 +31,15 @@ func scopeCSS(scope, css string) string {
 		head := rest[:open]
 		rest = rest[consumed:]
 		if isAtRule(head) {
-			out.WriteString(scopeAtRule(scope, head, body))
+			out.WriteString(scopeAtRule(scope, head, body, compound))
 			continue
 		}
-		out.WriteString(scopeRule(scope, head, body))
+		out.WriteString(scopeRule(scope, head, body, compound))
 	}
 	return out.String()
 }
 
-func scopeRule(scope, head, body string) string {
+func scopeRule(scope, head, body string, compound bool) string {
 	head = strings.TrimSpace(head)
 	if head == "" || strings.Contains(head, ":root") {
 		return head + "{" + body + "}"
@@ -50,6 +54,11 @@ func scopeRule(scope, head, body string) string {
 		out.WriteByte(' ')
 		out.WriteString(sel)
 		out.WriteString(", ")
+		if compound && !hasCombinator(sel) {
+			out.WriteString(scope)
+			out.WriteString(sel)
+			out.WriteString(", ")
+		}
 	}
 	res := out.String()
 	if strings.HasSuffix(res, ", ") {
@@ -58,17 +67,52 @@ func scopeRule(scope, head, body string) string {
 	return res + "{" + body + "}"
 }
 
-func scopeAtRule(scope, head, body string) string {
+func scopeAtRule(scope, head, body string, compound bool) string {
 	fields := strings.Fields(head)
 	if len(fields) == 0 {
 		return head + "{" + body + "}"
 	}
 	switch fields[0] {
 	case "@media", "@supports", "@layer":
-		return head + "{" + scopeCSS(scope, body) + "}"
+		return head + "{" + scopeCSS(scope, body, compound) + "}"
 	default:
 		return head + "{" + body + "}"
 	}
+}
+
+// hasCombinator reports whether sel contains a combinator (space, >, +, ~)
+// outside of brackets, parentheses, or strings.
+func hasCombinator(sel string) bool {
+	depth := 0
+	inStr := byte(0)
+	for i := 0; i < len(sel); i++ {
+		c := sel[i]
+		if inStr != 0 {
+			if c == '\\' {
+				i++
+				continue
+			}
+			if c == inStr {
+				inStr = 0
+			}
+			continue
+		}
+		switch c {
+		case '"', '\'':
+			inStr = c
+		case '(', '[':
+			depth++
+		case ')', ']':
+			if depth > 0 {
+				depth--
+			}
+		case ' ', '\t', '\n', '>', '+', '~':
+			if depth == 0 {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 // splitSelectors splits a comma-separated selector list on top-level commas,

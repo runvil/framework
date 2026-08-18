@@ -78,10 +78,10 @@ func TestScopeInjectedAndStylesCollected(t *testing.T) {
 		t.Fatal(err)
 	}
 	for _, want := range []string{
-		`[data-rv-component="badge"] .badge{ color: #0b58a1; }`,
+		`[data-rv-component="badge"] .badge, [data-rv-component="badge"].badge{ color: #0b58a1; }`,
 		`[data-rv-component="nav"] nav a{ color: #333; }`,
 		`@media (max-width: 48rem) {[data-rv-component="nav"] nav a{ color: #000; }}`,
-		`[data-rv-component="hero"] h1{ font-size: 2rem; }`,
+		`[data-rv-component="hero"] h1, [data-rv-component="hero"]h1{ font-size: 2rem; }`,
 		`.hero :root{ color: red; }`, // :root stays global
 		`[data-rv-layout="base"] body{ margin: 0; font: 16px/1.6 sans-serif; }`,
 	} {

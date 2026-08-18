@@ -288,13 +288,13 @@ func (s *Site) collectedCSS() string {
 	for _, name := range names {
 		if c, ok := s.comps[name]; ok && strings.TrimSpace(c.Style) != "" {
 			out.WriteString("/* " + name + " */\n")
-			out.WriteString(scopeCSS(`[data-rv-component="`+name+`"]`, c.Style))
+			out.WriteString(scopeCSS(`[data-rv-component="`+name+`"]`, c.Style, true))
 			out.WriteString("\n")
 			continue
 		}
 		if l, ok := s.layouts[name]; ok && strings.TrimSpace(l.Style) != "" {
 			out.WriteString("/* " + name + " */\n")
-			out.WriteString(scopeCSS(`[data-rv-layout="`+name+`"]`, l.Style))
+			out.WriteString(scopeCSS(`[data-rv-layout="`+name+`"]`, l.Style, false))
 			out.WriteString("\n")
 		}
 	}

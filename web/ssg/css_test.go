@@ -15,15 +15,15 @@ h1, .x a:hover { margin: 0; }
 @font-face { font-family: X; src: url(x.woff2); }
 .x::before { content: "a, b"; }
 `
-	got := scopeCSS(`[data-rv-component="c"]`, in)
+	got := scopeCSS(`[data-rv-component="c"]`, in, true)
 	for _, want := range []string{
-		`[data-rv-component="c"] h1{ color: red; }`,
-		`[data-rv-component="c"] h1, [data-rv-component="c"] .x a:hover{ margin: 0; }`,
+		`[data-rv-component="c"] h1, [data-rv-component="c"]h1{ color: red; }`,
+		`[data-rv-component="c"] h1, [data-rv-component="c"]h1, [data-rv-component="c"] .x a:hover{ margin: 0; }`,
 		`:root{ --a: 1; }`,
-		`@media (max-width: 48rem) {[data-rv-component="c"] .m{ padding: 0; }}`,
+		`@media (max-width: 48rem) {[data-rv-component="c"] .m, [data-rv-component="c"].m{ padding: 0; }}`,
 		`@keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }`,
 		`@font-face { font-family: X; src: url(x.woff2); }`,
-		`[data-rv-component="c"] .x::before{ content: "a, b"; }`,
+		`[data-rv-component="c"] .x::before, [data-rv-component="c"].x::before{ content: "a, b"; }`,
 	} {
 		if !strings.Contains(got, want) {
 			t.Errorf("scoped CSS missing %q", want)
@@ -31,6 +31,10 @@ h1, .x a:hover { margin: 0; }
 	}
 	if strings.Contains(got, `[data-rv-component="c"] :root`) {
 		t.Error(":root must not be scoped")
+	}
+	layout := scopeCSS(`[data-rv-layout="l"]`, `body { margin: 0; }`, false)
+	if layout != `[data-rv-layout="l"] body{ margin: 0; }` {
+		t.Errorf("layout scoping must not compound the root: %q", layout)
 	}
 }
 
