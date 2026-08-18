@@ -9,7 +9,7 @@ import "fmt"
 
 const (
 	// Name is the canonical name of the Runvil framework.
-	Name = "runvil-framework"
+	Name = "framework"
 	// Version is the semantic version of the framework.
 	Version = "0.1.0"
 )

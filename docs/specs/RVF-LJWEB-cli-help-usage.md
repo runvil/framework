@@ -17,19 +17,27 @@ specification defines how Runvil CLI commands expose help: an explicit `help`
 sub-command, automatic `-h`/`--help`, and consistent usage text rendered
 through `term`.
 
-## 2. Goals
+## 2. Problem Statement
+
+Help and usage text is typically hand-maintained, drifts out of sync with the
+flags and commands it documents, and is reachable through inconsistent routes
+(`-h`, `--help`, `help`, or nothing at all). Users cannot discover a tool's
+interface reliably, and nested subcommands become undiscoverable. Automation
+and operators likewise have no stable way to interrogate a CLI's surface.
+
+## 3. Goals
 
 - G1 — Provide consistent, predictable help output across all commands.
 - G2 — Make help available at every level of a command hierarchy.
 - G3 — Render help through the `term` conventions (colors degrade gracefully).
 
-## 3. Non-Goals
+## 4. Non-Goals
 
 - NG1 — Downloadable man pages or shell completions in the initial phase.
 - NG2 — Web-based documentation generation.
 - NG3 — Localized/translated help strings.
 
-## 4. Requirements
+## 5. Requirements
 
 | ID         | Requirement                                                       | Priority |
 | ---------- | ----------------------------------------------------------------- | -------- |
@@ -41,27 +49,27 @@ through `term`.
 | FRK-HP-006 | Help text is derived from command/flag definitions, not hand-authored strings. | Should |
 | FRK-HP-007 | Help output honors the `term` color policy (plain text when unsupported). | Must |
 
-## 5. Non-Functional Requirements
+## 6. Non-Functional Requirements
 
 - NFR1 — **Memory safety.** The `unsafe` package must not be used.
 - NFR2 — **Performance.** Help generation must stay near-instant.
 - NFR3 — **Portability.** Linux, macOS, and Windows.
 - NFR4 — **Quality gates.** `gofmt`, `go vet ./...`, and `go test ./...` must pass.
 
-## 6. Success Criteria
+## 7. Success Criteria
 
 - S1 — `help` and `-h` produce equivalent, deterministic output for a given app.
 - S2 — Nested-command help is reachable and correct.
 - S3 — Help output contains no escape sequences when colors are disabled.
 
-## 7. Related Specifications
+## 8. Related Specifications
 
 | SpecID    | Title                                           |
 | --------- | ----------------------------------------------- |
 | [RVF-M8SSR](./RVF-M8SSR-cli-application-model.md) | CLI Application Model                |
 | [RVF-WXQQ5](./RVF-WXQQ5-cli-output-formatting.md) | CLI Output & Formatting             |
-| [RVL-N459G](https://github.com/runvil/runvil-libs/blob/main/docs/specs/RVL-N459G-terminal-io-rendering.md) | Terminal I/O & Rendering            |
+| [RVL-N459G](https://github.com/runvil/libs/blob/main/docs/specs/RVL-N459G-terminal-io-rendering.md) | Terminal I/O & Rendering            |
 
-## 8. References
+## 9. References
 
 - [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.

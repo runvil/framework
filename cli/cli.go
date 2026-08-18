@@ -11,8 +11,8 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/runvil/runvil-libs/core"
-	"github.com/runvil/runvil-libs/term"
+	"github.com/runvil/libs/core"
+	"github.com/runvil/libs/term"
 )
 
 // Command is a runnable sub-command.

@@ -17,21 +17,28 @@ standard-library primitives (`os` environment variables, `strconv` coercion).
 This specification defines the convention: naming, typing, defaults, and
 precedence.
 
-## 2. Goals
+## 2. Problem Statement
+
+Environment-based configuration is handled per-project with no shared
+convention: variable names, parsing, defaults, and precedence all differ.
+Users hit surprise settings and opaque errors, and maintainers repeat
+coercion/validation code that stdlib `os` and `strconv` already cover.
+
+## 3. Goals
 
 - G1 — Standardize environment-variable naming across applications.
 - G2 — Provide type-safe coercion with explicit defaults.
 - G3 — Establish a single precedence order for flags, environment, and defaults.
 
-## 3. Non-Goals
+## 4. Non-Goals
 
 - NG1 — File-based configuration (TOML/YAML/JSON) in the initial phase.
 - NG2 — Remote/secret management or vault integration.
 - NG3 — A configuration schema/DTO validation framework.
 
-## 4. Requirements
+## 5. Requirements
 
-### 4.1 Naming & Sources
+### 5.1 Naming & Sources
 
 | ID         | Requirement                                                       | Priority |
 | ---------- | ----------------------------------------------------------------- | -------- |
@@ -39,7 +46,7 @@ precedence.
 | FRK-CF-002 | Use a `<APP>_` prefix (e.g. `GREET_`) with `SCREAMING_SNAKE_CASE` keys. | Must |
 | FRK-CF-003 | Expose each setting with a documented default.                    | Must     |
 
-### 4.2 Typing & Validation
+### 5.2 Typing & Validation
 
 | ID         | Requirement                                                       | Priority |
 | ---------- | ----------------------------------------------------------------- | -------- |
@@ -47,26 +54,26 @@ precedence.
 | FRK-CF-005 | Invalid values surface as usage errors (exit code 2).             | Must     |
 | FRK-CF-006 | Missing settings fall back to defaults without error.             | Must     |
 
-### 4.3 Precedence
+### 5.3 Precedence
 
 | ID         | Requirement                                                       | Priority |
 | ---------- | ----------------------------------------------------------------- | -------- |
 | FRK-CF-007 | Precedence order: flags > environment variables > defaults.       | Must     |
 
-## 5. Non-Functional Requirements
+## 6. Non-Functional Requirements
 
 - NFR1 — **Memory safety.** The `unsafe` package must not be used.
 - NFR2 — **Simplicity.** No external configuration dependencies.
 - NFR3 — **Portability.** Linux, macOS, and Windows.
 - NFR4 — **Quality gates.** `gofmt`, `go vet ./...`, and `go test ./...` must pass.
 
-## 6. Success Criteria
+## 7. Success Criteria
 
 - S1 — Coercion and validity rules are covered by tests.
 - S2 — The `greet` example demonstrates env-based configuration end-to-end.
 - S3 — No framework package imports a non-stdlib configuration library.
 
-## 7. Related Specifications
+## 8. Related Specifications
 
 | SpecID    | Title                                           |
 | --------- | ----------------------------------------------- |
@@ -74,6 +81,6 @@ precedence.
 | [RVF-QZTY2](./RVF-QZTY2-cli-errors-diagnostics.md) | CLI Errors & Diagnostics             |
 | [RVF-EHVF8](./RVF-EHVF8-cli-scaffolding.md)         | CLI Scaffolding                      |
 
-## 8. References
+## 9. References
 
 - [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.

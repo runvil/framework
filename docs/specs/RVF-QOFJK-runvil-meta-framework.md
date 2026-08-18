@@ -19,17 +19,32 @@ one cohesive, high-performance foundation.
 
 The framework is organized as a Go module monorepo hosting the framework's own
 orchestration packages. Shared primitives and utilities are maintained
-externally in the **Runvil Libraries** monorepo (`runvil-libs`) and consumed as
+externally in the **Runvil Libraries** monorepo (`libs`) and consumed as
 dependencies; Runvil does not re-implement them.
 
 ### 1.1 Current State
 
-- Module root `github.com/runvil/runvil-framework` with the `framework/` meta-package as the entry point.
+- Module root `github.com/runvil/framework` with the `framework/` meta-package as the entry point.
 - `cli/` provides the integrated command-line application model.
-- The module depends on `github.com/runvil/runvil-libs` v0.1.0, fetched from its git URL.
+- The module depends on `github.com/runvil/libs` v0.1.0, fetched from its git URL.
 - Shared module root: Go 1.22, MIT license.
 
-## 2. Goals
+## 2. Problem Statement
+
+The Go ecosystem offers CLI authors two unpalatable extremes: build from scratch
+with only the standard library, re-implementing dispatch, exit codes, help,
+output, and configuration for every project; or adopt a "batteries-included"
+framework that couples the application to one vendor's platform and resists
+modular adoption.
+
+As a result, commands behave inconsistently across tools, non-canonical exit
+codes break automation, and teams duplicate effort that the standard library
+already covers. Runvil's meta-framework answers this by composing modular,
+ecosystem-agnostic libraries (`libs`) with the Go standard library into
+a single cohesive foundation — first-class for the CLI ecosystem and shaped
+for expansion into async, HTTP, server, and worker ecosystems.
+
+## 3. Goals
 
 - G1 — Provide a single, cohesive entry point (`framework`) for adopting the Runvil meta-framework.
 - G2 — Establish the **CLI ecosystem** as the first-class, supported ecosystem in the initial phase.
@@ -37,23 +52,23 @@ dependencies; Runvil does not re-implement them.
 - G4 — Compose modules from external ecosystems without coupling to any single implementation.
 - G5 — Maintain production quality: memory safety, documented public APIs, and CI-enforced formatting/vetting.
 
-## 3. Non-Goals
+## 4. Non-Goals
 
 The following are explicitly out of scope for the initial phase:
 
-- NG1 — Re-implementing primitives already provided by `runvil-libs` or the Go standard library.
+- NG1 — Re-implementing primitives already provided by `libs` or the Go standard library.
 - NG2 — Building a full async runtime or HTTP server from scratch in this phase.
 - NG3 — Monolithic "batteries-included-only" design; modular adoption must remain possible.
 - NG4 — GUI/desktop application support (deferred to a later phase).
 - NG5 — Backwards compatibility guarantees before version `1.0.0`.
 
-## 4. Scope — Initial Phase: CLI Ecosystem
+## 5. Scope — Initial Phase: CLI Ecosystem
 
 The initial phase focuses on a framework-level CLI solution that composes
-reusable building blocks (sourced from `runvil-libs` and the Go standard
+reusable building blocks (sourced from `libs` and the Go standard
 library) into an integrated developer experience.
 
-### 4.1 Framework-Level Capabilities
+### 5.1 Framework-Level Capabilities
 
 | ID          | Requirement                                                            | Priority |
 | ----------- | ----------------------------------------------------------------------- | -------- |
@@ -66,23 +81,23 @@ library) into an integrated developer experience.
 | FRK-CLI-007 | Provide scaffolding (`init`/`new`) for bootstrapping new Runvil CLI projects. | Should |
 | FRK-CLI-008 | Expose all framework packages through the `framework` meta-package.     | Must    |
 
-### 4.2 Deliverables
+### 5.2 Deliverables
 
 - D1 — `cli/` implementing FRK-CLI-001..007.
 - D2 — Updated `framework/` meta-package documenting the composed packages (FRK-CLI-008).
 - D3 — Example CLI applications under `examples/` demonstrating usage.
 - D4 — CI workflow enforcing `gofmt`, `go vet`, and `go test ./...`.
 
-## 5. Architecture Constraints
+## 6. Architecture Constraints
 
 - C1 — The module is a Go monorepo; the `framework` meta-package is the public entry point.
-- C2 — Dependencies point **one direction only**: framework packages → `runvil-libs` packages; cyclic dependencies are prohibited.
-- C3 — `runvil-libs` packages are referenced by module version (e.g. `github.com/runvil/runvil-libs@v0.1.0`) fetched from its git URL; a local `replace` directive may be used during development.
+- C2 — Dependencies point **one direction only**: framework packages → `libs` packages; cyclic dependencies are prohibited.
+- C3 — `libs` packages are referenced by module version (e.g. `github.com/runvil/libs@v0.1.0`) fetched from its git URL; a local `replace` directive may be used during development.
 - C4 — Each package is versioned **independently**; the module root defines the shared language version and license.
 - C5 — The `unsafe` package must not be used; all exported identifiers must be documented.
 - C6 — New capabilities are introduced as additive packages; breaking changes are not allowed in minor/patch releases.
 
-## 6. Non-Functional Requirements
+## 7. Non-Functional Requirements
 
 - NFR1 — **Memory safety.** The `unsafe` package must not be used.
 - NFR2 — **Performance.** CLI startup and command dispatch overhead must remain minimal.
@@ -90,14 +105,14 @@ library) into an integrated developer experience.
 - NFR4 — **Minimum Go version.** The minimum supported Go version must be documented in the README.
 - NFR5 — **Quality gates.** `gofmt`, `go vet ./...`, and `go test ./...` must pass in CI.
 
-## 7. Success Criteria
+## 8. Success Criteria
 
 - S1 — A new project can be bootstrapped, built, and run using only the framework packages.
 - S2 — Framework packages pass `go vet` with no findings and all tests pass.
 - S3 — At least one complete example CLI application ships under `examples/`.
 - S4 — Documentation comments (rendered by `go doc`) cover every exported identifier.
 
-## 8. Future Phases (Expansion)
+## 9. Future Phases (Expansion)
 
 The architecture must accommodate, in order of priority:
 
@@ -111,7 +126,7 @@ The architecture must accommodate, in order of priority:
 
 Each phase is additive and must not break the previous phases.
 
-## 9. Related Specifications
+## 10. Related Specifications
 
 | SpecID    | Title                                           |
 | --------- | ----------------------------------------------- |
@@ -122,8 +137,8 @@ Each phase is additive and must not break the previous phases.
 | [RVF-UUQ3X](./RVF-UUQ3X-cli-configuration.md)     | CLI Configuration                    |
 | [RVF-EHVF8](./RVF-EHVF8-cli-scaffolding.md)       | CLI Scaffolding                      |
 
-## 10. References
+## 11. References
 
-- [Runvil Libraries — RVL-4Y8UP](https://github.com/runvil/runvil-libs/blob/main/docs/specs/RVL-4Y8UP-runvil-libraries.md) — Initial specification for the Runvil Libraries monorepo.
-- [runvil-libs](https://github.com/runvil/runvil-libs) — modular reusable libraries hosting `core` and `term`.
+- [Runvil Libraries — RVL-4Y8UP](https://github.com/runvil/libs/blob/main/docs/specs/RVL-4Y8UP-runvil-libraries.md) — Initial specification for the Runvil Libraries monorepo.
+- [libs](https://github.com/runvil/libs) — modular reusable libraries hosting `core` and `term`.
 - Project `README.md` for building and testing instructions.

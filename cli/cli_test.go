@@ -5,7 +5,7 @@ import (
 	"io"
 	"testing"
 
-	"github.com/runvil/runvil-libs/core"
+	"github.com/runvil/libs/core"
 )
 
 func successHandler(*flag.FlagSet) core.ExitCode {

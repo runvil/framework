@@ -22,11 +22,11 @@ Runvil is organized as a Go module monorepo that hosts the framework's own orche
 | `cli/`        | Integrated command-line application model (initial ecosystem).          |
 | `examples/`   | Example applications demonstrating the framework.                       |
 
-Shared primitives and terminal utilities are provided by the [`runvil-libs`](https://github.com/runvil/runvil-libs) monorepo — one of the ecosystems Runvil integrates rather than re-implements.
+Shared primitives and terminal utilities are provided by the [`libs`](https://github.com/runvil/libs) monorepo — one of the ecosystems Runvil integrates rather than re-implements.
 
 ## Related Repositories
 
-- [runvil-libs](https://github.com/runvil/runvil-libs) — Modular, reusable libraries for the Runvil ecosystem (`core`, `term`).
+- [libs](https://github.com/runvil/libs) — Modular, reusable libraries for the Runvil ecosystem (`core`, `term`).
 
 ## Getting Started
 
@@ -34,7 +34,7 @@ Shared primitives and terminal utilities are provided by the [`runvil-libs`](htt
 
 - Go toolchain 1.22 or newer — see [go.dev/dl](https://go.dev/dl/)
 
-The framework depends on the published `github.com/runvil/runvil-libs` module (fetched via its git URL); no local checkout is required.
+The framework depends on the published `github.com/runvil/libs` module (fetched via its git URL); no local checkout is required.
 
 ### Building
 
@@ -59,11 +59,11 @@ GREET_GREETING=Halo go run ./examples/greet hello --name Alice
 
 The following modules are planned for the framework:
 
-- `runvil-async` — Async runtime abstractions and task scheduling.
-- `runvil-http` — HTTP server and client abstractions.
-- `runvil-router` — Routing layer.
-- `runvil-server` — Integrated server (async + http + router).
-- `runvil-worker` — Background jobs and scheduling.
+- `async` — Async runtime abstractions and task scheduling.
+- `http` — HTTP server and client abstractions.
+- `router` — Routing layer.
+- `server` — Integrated server (async + http + router).
+- `worker` — Background jobs and scheduling.
 
 ## Contributing
 

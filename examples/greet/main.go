@@ -11,8 +11,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/runvil/runvil-framework/cli"
-	"github.com/runvil/runvil-libs/core"
+	"github.com/runvil/framework/cli"
+	"github.com/runvil/libs/core"
 )
 
 func main() {
