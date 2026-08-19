@@ -5,7 +5,6 @@
 | SpecID      | RVF-5K7PZ                                   |
 | Title       | Runvil UI Theming System                    |
 | Status      | Draft                                       |
-| Version     | 0.3.0                                       |
 | Date        | 2026-08-18                                  |
 | Author      | Runvil Contributors                         |
 | Domain      | Frameworks — UI                             |

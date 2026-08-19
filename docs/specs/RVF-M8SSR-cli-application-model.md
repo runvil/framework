@@ -5,7 +5,6 @@
 | SpecID      | RVF-M8SSR                                   |
 | Title       | CLI Application Model                       |
 | Status      | Draft                                       |
-| Version     | 0.1.0                                       |
 | Date        | 2026-08-18                                  |
 | Author      | Runvil Contributors                         |
 | Domain      | Frameworks — CLI                            |

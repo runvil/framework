@@ -5,7 +5,6 @@
 | SpecID      | RVF-8G3WQ                                   |
 | Title       | Runvil Web Framework                       |
 | Status      | Draft                                       |
-| Version     | 0.1.0                                       |
 | Date        | 2026-08-18                                  |
 | Author      | Runvil Contributors                         |
 | Domain      | Frameworks — Web                            |
@@ -44,7 +43,7 @@ and site builders cannot share a common static-export primitive.
 ## 4. Non-Goals
 
 - NG1 — A full HTTP client, websockets, or streaming protocols in this phase.
-- NG2 — A middleware ecosystem or dependency-injection container.
+- NG2 — A dependency-injection container or service locator (a middleware chain is specified separately in RVF-H3QD8).
 - NG3 — Server-side session, auth, or templating-specific template DSLs beyond `html/template`.
 
 ## 5. Requirements
@@ -97,6 +96,10 @@ and site builders cannot share a common static-export primitive.
 | --------- | ----------------------------------------------- |
 | [RVF-5K7PZ](./RVF-5K7PZ-web-theming-system.md)        | Web Theming System               |
 | [RVF-PN41Q](./RVF-PN41Q-static-site-generator.md)     | Static Site Generator            |
+| [RVF-H3QD8](./RVF-H3QD8-http-api-pipeline.md)         | HTTP & API Pipeline              |
+| [RVF-L6NJ5](./RVF-L6NJ5-server-frontend-pipeline.md)  | Server & Frontend Rendering Pipeline |
+| [RVF-P8RK9](./RVF-P8RK9-runvil-app-framework.md)      | Runvil App Framework             |
+| [RVF-2TK4X](./RVF-2TK4X-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
 | [RVF-M8SSR](./RVF-M8SSR-cli-application-model.md) | CLI Application Model                |
 | [RVF-WXQQ5](./RVF-WXQQ5-cli-output-formatting.md) | CLI Output & Formatting              |
 | [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) | Runvil Meta-Framework                |

@@ -5,7 +5,6 @@
 | SpecID      | RVF-PN41Q                                   |
 | Title       | Runvil Static Site Generator                |
 | Status      | Draft                                       |
-| Version     | 0.1.0                                       |
 | Date        | 2026-08-18                                  |
 | Author      | Runvil Contributors                         |
 | Domain      | Frameworks — Web — SSG                      |
@@ -36,11 +35,12 @@ Every consumer reinvents the same composition and asset-collection logic.
 - G3 — Support layouts that wrap page content in a shared shell.
 - G4 — Produce a complete static site (HTML plus collected CSS) in one build.
 - G5 — Serve the same pages during development through a plain HTTP handler.
+- G6 — Act as the **static-export mode** of the shared page model, producing output identical to the SSG's dynamic counterpart render.
 
 ## 4. Non-Goals
 
 - NG1 — Markdown authoring, collections, or content pipelines (owned by mdbind).
-- NG2 — Client-side hydration, islands, or JavaScript frameworks.
+- NG2 — Client-side hydration, islands, or JavaScript frameworks **in this phase**; exported pages must remain hydratable-ready (FRK-SSG-022..024, RVF-2TK4X) so JS/TS frameworks can be layered on without re-export.
 - NG3 — Runtime data fetching; all data is provided at build time.
 
 ## 5. Requirements
@@ -56,6 +56,21 @@ Every consumer reinvents the same composition and asset-collection logic.
 | FRK-SSG-007 | `Site.Build` writes pages as `index.html` (clean URLs) plus assets and a single collected `style.css`. | Must |
 | FRK-SSG-008 | Only CSS of components and layouts actually used by built pages is emitted. | Must |
 | FRK-SSG-009 | `Site` serves the same pages and assets over HTTP for development.  | Must |
+| FRK-SSG-010 | Provide a declarative `Config` describing components, layouts, pages, assets, theme, and site-wide data, decodable from `ssg.yaml`. | Must |
+| FRK-SSG-011 | Build a `Site` from a `Config` (`Config.Site`, `BuildFromConfig`); page data merges site-wide data over per-page overrides and injects `Title`, `Description`, and the configured `Theme`. | Must |
+| FRK-SSG-012 | Register a trusted-HTML template helper for data fields that intentionally contain markup; all other data remains escaped by default. | Must |
+| FRK-SSG-013 | Config theme palettes override the ui defaults by CSS token name (`primary`, `base-1`, …). | Must |
+| FRK-SSG-014 | Provide `LayoutFromUI` converting a reusable `ui.Layout` shell into an ssg `Layout`, substituting the ui title/main placeholders with the page's `{{ .Title }}` and `{{ .Content }}` so pages render into the shell; parse errors must surface. | Must |
+| FRK-SSG-015 | Declarative config layouts may reference a `ui` shell (`LayoutConfig.UI`); `Config.Site()` builds such layouts through `ui.LayoutFromConfig` + `LayoutFromUI`, merges the site theme when the shell has none, rejects registered `ui` shells with invalid templates, and emits a `assets/ui.css` asset whenever a `ui` shell is used. | Must |
+| FRK-SSG-016 | Provide `Config`/`Site` support for the `ui` component registry: a page's `Root` resolves through `ui.Registry` (and project component files) first, then inline config components; config markup (`ComponentConfig.Body`) is deprecated. | Must |
+| FRK-SSG-017 | Provide a loader for project component files (`ui/components/*.ui.html`) that registers each under its base name with scoped CSS, so custom components are referenced by name from config. | Must |
+| FRK-SSG-018 | Config must remain markup-free: pages are short entries (`path`, `layout`, `root`, `data`) and widget composition lives in component files/Go — never in `runvil.yaml`. | Must |
+| FRK-SSG-019 | The site theme/registry resolution is shared with SSR: same `ui.Theme` tokens and component registry; identical input stays byte-identical across build and serve. | Must |
+| FRK-SSG-020 | SSG is one mode of the shared page model (RVF-L6NJ5): a **static** page exported by the SSG renders through the same component/layout render path as a **dynamic** page served per request. | Must |
+| FRK-SSG-021 | Any static page is also servable as a dynamic page by `web.App` with zero markup/texture change, and vice-versa for fixed-data pages. | Must |
+| FRK-SSG-022 | Exported pages are hydratable-ready: stable `data-ui-component` scope attributes, deterministic markup, and props optionally serialized as `data-props` JSON (opt-in) for client mounting — without adding any `<script>` to default output. | Must |
+| FRK-SSG-023 | Component/layout CSS is exported separately and must never depend on runtime JavaScript; no framework-specific attributes are emitted by default. | Must |
+| FRK-SSG-024 | The build must be able to emit a defined script/mount injection point (empty by default) so a future client layer can attach JS/TS bundles as assets without touching server rendering. | Should |
 
 ## 6. Non-Functional Requirements
 
@@ -68,6 +83,8 @@ Every consumer reinvents the same composition and asset-collection logic.
 - S1 — A page composed of nested components builds to static HTML where component styles are prefixed by their scope.
 - S2 — Building a site with unused components omits their CSS from `style.css`.
 - S3 — The development handler renders the same output as the build.
+- S4 — A site described entirely by an `ssg.yaml` config builds through `BuildFromConfig` with injected site data, theme, and trusted-HTML helpers.
+- S5 — A page whose `Root` names a registered component (built-in or project file) renders from data props with no markup in config.
 
 ## 8. Related Specifications
 
@@ -75,6 +92,9 @@ Every consumer reinvents the same composition and asset-collection logic.
 | --------- | ----------------------------------------------- |
 | [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md) | Runvil Web Framework             |
 | [RVF-5K7PZ](./RVF-5K7PZ-web-theming-system.md) | Runvil Web Theming System       |
+| [RVF-ZK9LQ](./RVF-ZK9LQ-layout-ui-system.md) | Layout & UI System (registry + Go-native components) |
+| [RVF-L6NJ5](./RVF-L6NJ5-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline (shared page model) |
+| [RVF-2TK4X](./RVF-2TK4X-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
 
 ## 9. References
 

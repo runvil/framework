@@ -6,9 +6,11 @@ package ssg
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"html/template"
 	"io"
+	"io/fs"
 	"net/http"
 	"os"
 	"path"
@@ -20,6 +22,8 @@ import (
 
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"
+
+	"github.com/runvil/framework/ui"
 )
 
 // Component is a reusable piece of UI. Body is the html/template source;
@@ -62,15 +66,23 @@ type Page struct {
 	Root string
 	// Data is passed to the root component.
 	Data any
+	// Props, when the Site emits props, is serialized to a data-props
+	// attribute on the page's root element for client-side mounting.
+	Props any
+	// Scripts are <script src> URLs injected before the closing body tag,
+	// empty by default.
+	Scripts []string
 }
 
 // Site builds a static website from components, layouts, pages, and assets.
 type Site struct {
-	funcs   template.FuncMap
-	layouts map[string]*Layout
-	comps   map[string]*Component
-	pages   []*Page
-	assets  map[string]string
+	funcs     template.FuncMap
+	layouts   map[string]*Layout
+	comps     map[string]*Component
+	pages     []*Page
+	assets    map[string]string
+	reg       *ui.Registry
+	emitProps bool
 
 	set *template.Template
 	mu  sync.Mutex
@@ -124,6 +136,57 @@ func (s *Site) Asset(name, body string) *Site {
 	s.assets[name] = body
 	return s
 }
+
+// Assets returns the names of all registered assets in sorted order.
+func (s *Site) Assets() []string {
+	names := make([]string, 0, len(s.assets))
+	for name := range s.assets {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	return names
+}
+
+// AssetBody returns the content of a registered asset.
+func (s *Site) AssetBody(name string) (string, bool) {
+	body, ok := s.assets[name]
+	return body, ok
+}
+
+// Open implements fs.FS over the site's asset map, letting an App serve
+// assets from a live Site through a single static mount.
+func (s *Site) Open(name string) (fs.File, error) {
+	name = strings.TrimPrefix(name, "/")
+	body, ok := s.assets[name]
+	if !ok {
+		return nil, fs.ErrNotExist
+	}
+	return fsFile{name: name, r: strings.NewReader(body)}, nil
+}
+
+// fsFile is an fs.File backed by a string asset body.
+type fsFile struct {
+	name string
+	r    *strings.Reader
+}
+
+func (f fsFile) Stat() (fs.FileInfo, error) {
+	return fs.FileInfo(fi{name: f.name, size: int64(f.r.Len())}), nil
+}
+func (f fsFile) Read(p []byte) (int, error) { return f.r.Read(p) }
+func (f fsFile) Close() error               { return nil }
+
+type fi struct {
+	name string
+	size int64
+}
+
+func (i fi) Name() string       { return path.Base(i.name) }
+func (i fi) Size() int64        { return i.size }
+func (i fi) Mode() fs.FileMode  { return 0o444 }
+func (i fi) ModTime() time.Time { return time.Time{} }
+func (i fi) IsDir() bool        { return false }
+func (i fi) Sys() any           { return nil }
 
 // Build renders every page and writes the site into outDir. It returns the
 // paths of the files created, relative to outDir.
@@ -227,18 +290,51 @@ func (s *Site) Handler() http.Handler {
 	return mux
 }
 
+// Registry sets the component registry used to resolve component names that
+// don't correspond to template bodies. Resolution order: registered Go-native
+// components first, then template components defined on the site.
+func (s *Site) Registry(reg *ui.Registry) *Site {
+	s.reg = reg
+	return s
+}
+
+// EmitProps enables serializing a page's Props to a data-props attribute on
+// the page's root element, providing a stable mount point for client-side
+// frameworks. Off by default; pages with a nil Props are left untouched.
+func (s *Site) EmitProps() *Site {
+	s.emitProps = true
+	return s
+}
+
+// RenderPage renders a page's root component inside its layout as a complete
+// HTML document. It is the shared render path used by both live SSR and
+// static export, guaranteeing identical output for identical input.
+func (s *Site) RenderPage(p *Page) (string, error) {
+	if err := s.prepare(); err != nil {
+		return "", err
+	}
+	return s.renderPage(p)
+}
+
 // renderComponent renders a component with data, marks it used, and injects
 // its scope attribute onto the rendered root element.
 func (s *Site) renderComponent(name string, data any) (template.HTML, error) {
-	if _, ok := s.comps[name]; !ok {
-		return "", fmt.Errorf("ssg: undefined component %q", name)
+	if _, ok := s.comps[name]; ok {
+		s.markUsed(name)
+		var buf bytes.Buffer
+		if err := s.set.ExecuteTemplate(&buf, name, data); err != nil {
+			return "", err
+		}
+		return scopeFragment(name, buf.String())
 	}
-	s.markUsed(name)
-	var buf bytes.Buffer
-	if err := s.set.ExecuteTemplate(&buf, name, data); err != nil {
-		return "", err
+	if s.reg != nil {
+		if out, err := s.reg.Render(name, data); err == nil {
+			return out, nil
+		} else if !strings.HasPrefix(err.Error(), "ui: undefined component") {
+			return "", err
+		}
 	}
-	return scopeFragment(name, buf.String())
+	return "", fmt.Errorf("ssg: undefined component %q", name)
 }
 
 // renderPage renders a page's root component inside its layout.
@@ -246,6 +342,12 @@ func (s *Site) renderPage(p *Page) (string, error) {
 	root, err := s.renderComponent(p.Root, p.Data)
 	if err != nil {
 		return "", err
+	}
+	if s.emitProps && p.Props != nil {
+		root, err = injectDataProps(root, p.Props)
+		if err != nil {
+			return "", err
+		}
 	}
 	_, ok := s.layouts[p.Layout]
 	if !ok {
@@ -266,7 +368,11 @@ func (s *Site) renderPage(p *Page) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return string(scoped), nil
+	body := string(scoped)
+	if len(p.Scripts) > 0 {
+		body = injectScripts(body, p.Scripts)
+	}
+	return body, nil
 }
 
 // markUsed records that a component or layout was referenced.
@@ -419,4 +525,51 @@ func firstElement(frag []*html.Node) *html.Node {
 		}
 	}
 	return nil
+}
+
+// injectDataProps serializes props to a data-props attribute on the first
+// element of a rendered fragment, giving client-side frameworks a stable,
+// opt-in hydration payload.
+func injectDataProps(fragHTML template.HTML, props any) (template.HTML, error) {
+	data, err := json.Marshal(props)
+	if err != nil {
+		return "", fmt.Errorf("ssg: encode page props: %w", err)
+	}
+	frag, err := html.ParseFragment(strings.NewReader(string(fragHTML)), &html.Node{
+		Type:     html.ElementNode,
+		Data:     "body",
+		DataAtom: atom.Body,
+	})
+	if err != nil {
+		return "", err
+	}
+	target := firstElement(frag)
+	if target == nil {
+		return fragHTML, nil
+	}
+	target.Attr = append(target.Attr, html.Attribute{Key: "data-props", Val: string(data)})
+	var buf bytes.Buffer
+	for _, n := range frag {
+		if err := html.Render(&buf, n); err != nil {
+			return "", err
+		}
+	}
+	return template.HTML(buf.String()), nil
+}
+
+// injectScripts inserts <script src> tags before the closing </body> tag,
+// the documented mount script slot, which is empty by default.
+func injectScripts(body string, scripts []string) string {
+	var sb strings.Builder
+	for _, src := range scripts {
+		sb.WriteString(`<script src="`)
+		sb.WriteString(src)
+		sb.WriteString(`"></script>`)
+	}
+	sb.WriteString("</body>")
+	idx := strings.LastIndex(body, "</body>")
+	if idx < 0 {
+		return body + sb.String()
+	}
+	return body[:idx] + sb.String()
 }

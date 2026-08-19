@@ -42,11 +42,19 @@ type Router struct {
 	statics []staticRoute
 	// NotFound, when set, handles unmatched routes.
 	NotFound HandlerFunc
+	mws      []Middleware
+
+	base   string
+	parent *Router
+
+	built http.Handler
+	dirty bool
 }
 
 type staticRoute struct {
 	prefix string
 	dir    string
+	fsys   fs.FS
 }
 
 // NewRouter returns an empty Router.
@@ -59,22 +67,95 @@ func (r *Router) Get(pattern string, h HandlerFunc) {
 	r.Handle(http.MethodGet, pattern, h)
 }
 
+// Post registers a handler for POST requests on a path pattern.
+func (r *Router) Post(pattern string, h HandlerFunc) {
+	r.Handle(http.MethodPost, pattern, h)
+}
+
+// Put registers a handler for PUT requests on a path pattern.
+func (r *Router) Put(pattern string, h HandlerFunc) {
+	r.Handle(http.MethodPut, pattern, h)
+}
+
+// Delete registers a handler for DELETE requests on a path pattern.
+func (r *Router) Delete(pattern string, h HandlerFunc) {
+	r.Handle(http.MethodDelete, pattern, h)
+}
+
+// Patch registers a handler for PATCH requests on a path pattern.
+func (r *Router) Patch(pattern string, h HandlerFunc) {
+	r.Handle(http.MethodPatch, pattern, h)
+}
+
 // Handle registers a handler for the given HTTP method and path pattern.
 // Path segments of the form "{name}" become parameters.
 func (r *Router) Handle(method, pattern string, h HandlerFunc) {
 	if h == nil {
 		h = func(http.ResponseWriter, *http.Request, Params) {}
 	}
-	r.routes = append(r.routes, &Route{method: method, segments: parsePattern(pattern), handle: h})
+	root := r.root()
+	root.routes = append(root.routes, &Route{method: method, segments: parsePattern(joinPattern(r.base, pattern)), handle: h})
+	root.dirty = true
+}
+
+// Use registers middleware applied to every route in registration order.
+func (r *Router) Use(mw ...Middleware) {
+	root := r.root()
+	root.mws = append(root.mws, mw...)
+	root.dirty = true
+}
+
+// Group returns a scoped router sharing the parent's middleware. Routes and
+// static dirs registered on the group are mounted under prefix.
+func (r *Router) Group(prefix string) *Router {
+	base := strings.Trim(r.base, "/")
+	if p := strings.Trim(prefix, "/"); p != "" {
+		base += "/" + p
+	}
+	return &Router{base: "/" + strings.Trim(base, "/"), parent: r.root()}
 }
 
 // Static serves files from dir under the URL prefix.
 func (r *Router) Static(prefix, dir string) {
-	r.statics = append(r.statics, staticRoute{prefix: prefix, dir: dir})
+	root := r.root()
+	root.statics = append(root.statics, staticRoute{prefix: joinPattern(r.base, prefix), dir: dir})
+	root.dirty = true
+}
+
+// StaticFS serves files from fsys (an embed-compatible fs.FS) under the URL
+// prefix.
+func (r *Router) StaticFS(prefix string, fsys fs.FS) {
+	root := r.root()
+	root.statics = append(root.statics, staticRoute{prefix: joinPattern(r.base, prefix), fsys: fsys})
+	root.dirty = true
 }
 
 // ServeHTTP implements http.Handler.
 func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+	r.handler().ServeHTTP(w, req)
+}
+
+func (r *Router) root() *Router {
+	if r.parent != nil {
+		return r.parent
+	}
+	return r
+}
+
+func (r *Router) handler() http.Handler {
+	if r.built != nil && !r.dirty {
+		return r.built
+	}
+	var h http.Handler = http.HandlerFunc(r.serve)
+	for i := len(r.mws) - 1; i >= 0; i-- {
+		h = r.mws[i](h)
+	}
+	r.built = h
+	r.dirty = false
+	return h
+}
+
+func (r *Router) serve(w http.ResponseWriter, req *http.Request) {
 	for _, rt := range r.routes {
 		if rt.method != req.Method {
 			continue
@@ -88,6 +169,10 @@ func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		if !strings.HasPrefix(req.URL.Path, st.prefix) {
 			continue
 		}
+		if st.fsys != nil {
+			http.StripPrefix(st.prefix, http.FileServer(http.FS(st.fsys))).ServeHTTP(w, req)
+			return
+		}
 		rel := strings.TrimPrefix(req.URL.Path, st.prefix)
 		file := filepath.Join(st.dir, filepath.Clean("/"+rel))
 		http.ServeFile(w, req, file)
@@ -98,6 +183,16 @@ func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	http.NotFound(w, req)
+}
+
+// joinPattern mounts pattern under base, preserving a leading slash when the
+// base has one (e.g. base "/api/v1" + pattern "/users" -> "/api/v1/users").
+func joinPattern(base, pattern string) string {
+	trimmed := strings.Trim(pattern, "/")
+	if base == "" {
+		return "/" + trimmed
+	}
+	return strings.TrimRight(base, "/") + "/" + trimmed
 }
 
 // match reports whether path matches the route pattern and returns extracted
