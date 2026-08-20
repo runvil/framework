@@ -8,6 +8,7 @@ Ordered by **impact-to-effort** (high impact, low effort first) and **dependency
 | --------- | ------------------------------------------ | ------ | ---------- |
 | [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) | Runvil Meta-Framework — Initial Specification | Draft | — |
 | [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework | Draft | RVF-CMBZJ |
+| [RVF-DF3PL](./RVF-ssg-DF3PL-file-site-pipeline.md) | File-Based Site Pipeline (`.rv` Modules) | Draft | RVF-M07QS, RVF-PT8OD |
 | [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Static Site Generator | Draft | RVF-M07QS |
 | [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) | Draft | RVF-M07QS |
 | [RVF-C9WLJ](./RVF-di-C9WLJ-app-container-service-providers.md) | App Container & Service Providers | Draft | RVF-CMBZJ |
