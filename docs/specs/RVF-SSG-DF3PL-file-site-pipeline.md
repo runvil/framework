@@ -149,9 +149,9 @@ conceptual dead-end:
 
 | SpecID    | Title                                                        |
 | --------- | ------------------------------------------------------------ |
-| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Static Site Generator (engine internals; inline-config rows superseded) |
-| [RVF-D57UK](./RVF-ssg-D57UK-ssg-markdown-content-pipeline.md) | SSG Markdown Content Pipeline & Collections (becomes FRK-FLS-030..033) |
-| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework   |
-| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md)       | Layout & UI System      |
-| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration |
-| [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-builder-FX9H2-mdbind-site-builder.md) | mdbind Site Builder (converges into FRK-FLS-060) |
+| [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md) | Static Site Generator (engine internals; inline-config rows superseded) |
+| [RVF-D57UK](./RVF-SSG-D57UK-ssg-markdown-content-pipeline.md) | SSG Markdown Content Pipeline & Collections (becomes FRK-FLS-030..033) |
+| [RVF-M07QS](./RVF-WEB-M07QS-runvil-web-framework.md) | Runvil Web Framework   |
+| [RVF-PPUWX](./RVF-UI-PPUWX-layout-ui-system.md)       | Layout & UI System      |
+| [RVF-F2TQC](./RVF-JS-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration |
+| [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-BUILDER-FX9H2-mdbind-site-builder.md) | mdbind Site Builder (converges into FRK-FLS-060) |

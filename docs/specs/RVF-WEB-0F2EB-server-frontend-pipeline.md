@@ -126,15 +126,15 @@ server-rendered frontend is the missing bridge:
 
 | SpecID      | RVF-0F2EB                              |
 | --------- | ----------------------------------------------- |
-| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework (host) |
-| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
-| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) |
-| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Static Site Generator (shared render model) |
-| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) | Layout & UI System (registry with `Default()`) |
-| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
-| [RVN-6K41E](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-run-6K41E-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
+| [RVF-M07QS](./RVF-WEB-M07QS-runvil-web-framework.md) | Runvil Web Framework (host) |
+| [RVF-230KF](./RVF-HTTP-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
+| [RVF-C4087](./RVF-APP-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) |
+| [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md) | Static Site Generator (shared render model) |
+| [RVF-PPUWX](./RVF-UI-PPUWX-layout-ui-system.md) | Layout & UI System (registry with `Default()`) |
+| [RVF-F2TQC](./RVF-JS-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
+| [RVN-6K41E](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-RUN-6K41E-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
 
 ## 9. References
 
-- [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) — Runvil Web Framework.
+- [RVF-M07QS](./RVF-WEB-M07QS-runvil-web-framework.md) — Runvil Web Framework.
 - Go stdlib `net/http`, `os/signal`, `context`.

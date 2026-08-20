@@ -121,17 +121,17 @@ the "magic main" that other fullstack Go frameworks were criticized for
 
 | SpecID      | RVF-C4087                              |
 | --------- | ----------------------------------------------- |
-| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework (host) |
-| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
-| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
-| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Static Site Generator (site/ export) |
-| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) | Layout & UI System |
-| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (client asset seam) |
-| [RVN-6K41E](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-run-6K41E-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
-| [RVL-2X1QZ](https://github.com/runvil/libs/blob/main/docs/specs/RVL-config-2X1QZ-configuration-loading.md) | Configuration Loading |
-| [RVL-LHANF](https://github.com/runvil/libs/blob/main/docs/specs/RVL-validate-LHANF-struct-validation.md) | Struct Validation |
+| [RVF-M07QS](./RVF-WEB-M07QS-runvil-web-framework.md) | Runvil Web Framework (host) |
+| [RVF-230KF](./RVF-HTTP-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
+| [RVF-0F2EB](./RVF-WEB-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
+| [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md) | Static Site Generator (site/ export) |
+| [RVF-PPUWX](./RVF-UI-PPUWX-layout-ui-system.md) | Layout & UI System |
+| [RVF-F2TQC](./RVF-JS-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (client asset seam) |
+| [RVN-6K41E](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-RUN-6K41E-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
+| [RVL-2X1QZ](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CONFIG-2X1QZ-configuration-loading.md) | Configuration Loading |
+| [RVL-LHANF](https://github.com/runvil/libs/blob/main/docs/specs/RVL-VALIDATE-LHANF-struct-validation.md) | Struct Validation |
 
 ## 9. References
 
-- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework (module architecture).
+- [RVF-CMBZJ](./RVF-META-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework (module architecture).
 - Go stdlib `net/http`, `os/signal`.

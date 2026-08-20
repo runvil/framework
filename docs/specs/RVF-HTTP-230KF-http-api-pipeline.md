@@ -114,14 +114,14 @@ Runvil apps. A shared pipeline fixes this once in the framework.
 
 | SpecID      | RVF-230KF                              |
 | --------- | ----------------------------------------------- |
-| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework (host) |
-| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
-| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (monolith assembly) |
-| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (shared JSON/data-props contract) |
-| [RVL-LHANF](https://github.com/runvil/libs/blob/main/docs/specs/RVL-validate-LHANF-struct-validation.md) | Struct Validation (dependency) |
-| [RVL-W0J2X](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-W0J2X-errors-exit-codes.md) | Core Errors & Exit Codes |
+| [RVF-M07QS](./RVF-WEB-M07QS-runvil-web-framework.md) | Runvil Web Framework (host) |
+| [RVF-0F2EB](./RVF-WEB-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
+| [RVF-C4087](./RVF-APP-C4087-runvil-app-framework.md) | Runvil App Framework (monolith assembly) |
+| [RVF-F2TQC](./RVF-JS-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (shared JSON/data-props contract) |
+| [RVL-LHANF](https://github.com/runvil/libs/blob/main/docs/specs/RVL-VALIDATE-LHANF-struct-validation.md) | Struct Validation (dependency) |
+| [RVL-W0J2X](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CORE-W0J2X-errors-exit-codes.md) | Core Errors & Exit Codes |
 
 ## 9. References
 
-- [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) — Layout & UI System (component registry the SSR layer uses).
-- [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) — Static Site Generator.
+- [RVF-PPUWX](./RVF-UI-PPUWX-layout-ui-system.md) — Layout & UI System (component registry the SSR layer uses).
+- [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md) — Static Site Generator.

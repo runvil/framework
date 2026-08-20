@@ -72,10 +72,10 @@ and users lack quick, structured diagnostics.
 
 | SpecID      | RVF-KAKQL                              |
 | --------- | ----------------------------------------------- |
-| [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) | CLI Application Model                |
-| [RVF-NPFSE](./RVF-cli-NPFSE-cli-output-formatting.md) | CLI Output & Formatting             |
-| [RVL-W0J2X](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-W0J2X-errors-exit-codes.md) | Core Errors & Exit Codes            |
+| [RVF-5XJFC](./RVF-CLI-5XJFC-cli-application-model.md) | CLI Application Model                |
+| [RVF-NPFSE](./RVF-CLI-NPFSE-cli-output-formatting.md) | CLI Output & Formatting             |
+| [RVL-W0J2X](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CORE-W0J2X-errors-exit-codes.md) | Core Errors & Exit Codes            |
 
 ## 9. References
 
-- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.
+- [RVF-CMBZJ](./RVF-META-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.

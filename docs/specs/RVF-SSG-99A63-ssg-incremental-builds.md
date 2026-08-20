@@ -102,7 +102,7 @@ doesn't scale.
 
 | SpecID      | RVF-99A63                              |
 | --------- | ----------------------------------------------- |
-| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Core SSG |
-| [RVF-D57UK](./RVF-ssg-D57UK-ssg-markdown-content-pipeline.md) | Content Pipeline |
-| [RVF-DR5YU](./RVF-ssg-DR5YU-ssg-asset-pipeline.md) | Asset Pipeline |
-| [RVF-209JV](./RVF-ssg-209JV-ssg-live-reload-hmr.md) | Live Reload / HMR |
+| [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md) | Core SSG |
+| [RVF-D57UK](./RVF-SSG-D57UK-ssg-markdown-content-pipeline.md) | Content Pipeline |
+| [RVF-DR5YU](./RVF-SSG-DR5YU-ssg-asset-pipeline.md) | Asset Pipeline |
+| [RVF-209JV](./RVF-SSG-209JV-ssg-live-reload-hmr.md) | Live Reload / HMR |

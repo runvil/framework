@@ -104,7 +104,7 @@ switch between editor and browser.
 
 | SpecID      | RVF-209JV                              |
 | --------- | ----------------------------------------------- |
-| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Core SSG |
-| [RVF-99A63](./RVF-ssg-99A63-ssg-incremental-builds.md) | Incremental Builds (feeds HMR) |
-| [RVF-D57UK](./RVF-ssg-D57UK-ssg-markdown-content-pipeline.md) | Content Pipeline |
-| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Shared Page Model |
+| [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md) | Core SSG |
+| [RVF-99A63](./RVF-SSG-99A63-ssg-incremental-builds.md) | Incremental Builds (feeds HMR) |
+| [RVF-D57UK](./RVF-SSG-D57UK-ssg-markdown-content-pipeline.md) | Content Pipeline |
+| [RVF-0F2EB](./RVF-WEB-0F2EB-server-frontend-pipeline.md) | Shared Page Model |

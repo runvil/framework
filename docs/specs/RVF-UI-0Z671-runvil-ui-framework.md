@@ -67,11 +67,11 @@ drift apart.
 
 | SpecID      | RVF-0Z671                              |
 | --------- | ----------------------------------------------- |
-| [RVF-V0TMZ](./RVF-ui-V0TMZ-web-theming-system.md) | Web Theming System (moved to ui) |
-| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework             |
-| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Static Site Generator            |
-| [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-builder-FX9H2-mdbind-site-builder.md) | mdbind Site Builder |
+| [RVF-V0TMZ](./RVF-UI-V0TMZ-web-theming-system.md) | Web Theming System (moved to ui) |
+| [RVF-M07QS](./RVF-WEB-M07QS-runvil-web-framework.md) | Runvil Web Framework             |
+| [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md) | Static Site Generator            |
+| [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-BUILDER-FX9H2-mdbind-site-builder.md) | mdbind Site Builder |
 
 ## 9. References
 
-- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Framework initial specification.
+- [RVF-CMBZJ](./RVF-META-CMBZJ-runvil-meta-framework.md) — Runvil Framework initial specification.

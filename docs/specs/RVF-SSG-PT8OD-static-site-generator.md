@@ -90,12 +90,12 @@ Every consumer reinvents the same composition and asset-collection logic.
 
 | SpecID      | RVF-PT8OD                              |
 | --------- | ----------------------------------------------- |
-| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework             |
-| [RVF-V0TMZ](./RVF-ui-V0TMZ-web-theming-system.md) | Runvil Web Theming System       |
-| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) | Layout & UI System (registry + Go-native components) |
-| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline (shared page model) |
-| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
+| [RVF-M07QS](./RVF-WEB-M07QS-runvil-web-framework.md) | Runvil Web Framework             |
+| [RVF-V0TMZ](./RVF-UI-V0TMZ-web-theming-system.md) | Runvil Web Theming System       |
+| [RVF-PPUWX](./RVF-UI-PPUWX-layout-ui-system.md) | Layout & UI System (registry + Go-native components) |
+| [RVF-0F2EB](./RVF-WEB-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline (shared page model) |
+| [RVF-F2TQC](./RVF-JS-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
 
 ## 9. References
 
-- [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-builder-FX9H2-mdbind-site-builder.md) — mdbind Site Builder (markdown-driven counterpart).
+- [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-BUILDER-FX9H2-mdbind-site-builder.md) — mdbind Site Builder (markdown-driven counterpart).

@@ -142,17 +142,17 @@ that is built and resolved at a single, explicit composition root.
 
 | SpecID      | RVF-C9WLJ                              |
 | --------- | ----------------------------------------------- |
-| [RVF-CCI0N](./RVF-struct-CCI0N-app-directory-structure.md) | App Project Directory Structure Standard |
-| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) |
-| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) | Layout & UI System |
-| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
-| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
-| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration |
-| [RVN-6K41E](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-run-6K41E-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
-| [RVL-2X1QZ](https://github.com/runvil/libs/blob/main/docs/specs/RVL-config-2X1QZ-configuration-loading.md) | Configuration Loading |
-| [RVL-LHANF](https://github.com/runvil/libs/blob/main/docs/specs/RVL-validate-LHANF-struct-validation.md) | Struct Validation |
+| [RVF-CCI0N](./RVF-STRUCT-CCI0N-app-directory-structure.md) | App Project Directory Structure Standard |
+| [RVF-C4087](./RVF-APP-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) |
+| [RVF-PPUWX](./RVF-UI-PPUWX-layout-ui-system.md) | Layout & UI System |
+| [RVF-230KF](./RVF-HTTP-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
+| [RVF-0F2EB](./RVF-WEB-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
+| [RVF-F2TQC](./RVF-JS-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration |
+| [RVN-6K41E](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-RUN-6K41E-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
+| [RVL-2X1QZ](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CONFIG-2X1QZ-configuration-loading.md) | Configuration Loading |
+| [RVL-LHANF](https://github.com/runvil/libs/blob/main/docs/specs/RVL-VALIDATE-LHANF-struct-validation.md) | Struct Validation |
 
 ## 9. References
 
-- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework (module architecture; libs are framework-agnostic).
+- [RVF-CMBZJ](./RVF-META-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework (module architecture; libs are framework-agnostic).
 - Go standard library `os/signal`, `log/slog`, and constructor-injection idioms.

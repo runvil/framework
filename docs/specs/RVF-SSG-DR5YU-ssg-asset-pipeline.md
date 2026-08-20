@@ -97,6 +97,6 @@ The current SSG passes assets through verbatim (`Assets map[string]string`).
 
 | SpecID      | RVF-DR5YU                              |
 | --------- | ----------------------------------------------- |
-| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Core SSG |
-| [RVF-D57UK](./RVF-ssg-D57UK-ssg-markdown-content-pipeline.md) | Markdown Content Pipeline |
-| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Shared page model |
+| [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md) | Core SSG |
+| [RVF-D57UK](./RVF-SSG-D57UK-ssg-markdown-content-pipeline.md) | Markdown Content Pipeline |
+| [RVF-0F2EB](./RVF-WEB-0F2EB-server-frontend-pipeline.md) | Shared page model |

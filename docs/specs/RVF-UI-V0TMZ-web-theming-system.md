@@ -71,10 +71,10 @@ the same toggle.
 
 | SpecID      | RVF-V0TMZ                              |
 | --------- | ----------------------------------------------- |
-| [RVF-0Z671](./RVF-ui-0Z671-runvil-ui-framework.md) | Runvil UI Framework (ships this system) |
-| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework             |
-| [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-builder-FX9H2-mdbind-site-builder.md) | mdbind Site Builder |
+| [RVF-0Z671](./RVF-UI-0Z671-runvil-ui-framework.md) | Runvil UI Framework (ships this system) |
+| [RVF-M07QS](./RVF-WEB-M07QS-runvil-web-framework.md) | Runvil Web Framework             |
+| [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-BUILDER-FX9H2-mdbind-site-builder.md) | mdbind Site Builder |
 
 ## 9. References
 
-- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Framework initial specification.
+- [RVF-CMBZJ](./RVF-META-CMBZJ-runvil-meta-framework.md) — Runvil Framework initial specification.

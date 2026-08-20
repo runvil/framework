@@ -129,15 +129,15 @@ Each phase is additive and must not break the previous phases.
 
 | SpecID      | RVF-CMBZJ                              |
 | --------- | ----------------------------------------------- |
-| [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) | CLI Application Model                |
-| [RVF-MFA0T](./RVF-cli-MFA0T-cli-help-usage.md)         | CLI Help & Usage                     |
-| [RVF-NPFSE](./RVF-cli-NPFSE-cli-output-formatting.md) | CLI Output & Formatting              |
-| [RVF-KAKQL](./RVF-cli-KAKQL-cli-errors-diagnostics.md) | CLI Errors & Diagnostics             |
-| [RVF-FGNZ9](./RVF-cli-FGNZ9-cli-configuration.md)     | CLI Configuration                    |
-| [RVF-PZ5JU](./RVF-cli-PZ5JU-cli-scaffolding.md)       | CLI Scaffolding                      |
+| [RVF-5XJFC](./RVF-CLI-5XJFC-cli-application-model.md) | CLI Application Model                |
+| [RVF-MFA0T](./RVF-CLI-MFA0T-cli-help-usage.md)         | CLI Help & Usage                     |
+| [RVF-NPFSE](./RVF-CLI-NPFSE-cli-output-formatting.md) | CLI Output & Formatting              |
+| [RVF-KAKQL](./RVF-CLI-KAKQL-cli-errors-diagnostics.md) | CLI Errors & Diagnostics             |
+| [RVF-FGNZ9](./RVF-CLI-FGNZ9-cli-configuration.md)     | CLI Configuration                    |
+| [RVF-PZ5JU](./RVF-CLI-PZ5JU-cli-scaffolding.md)       | CLI Scaffolding                      |
 
 ## 11. References
 
-- [Runvil Libraries — RVL-M1ZKS](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-M1ZKS-runvil-libraries.md) — Initial specification for the Runvil Libraries monorepo.
+- [Runvil Libraries — RVL-M1ZKS](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CORE-M1ZKS-runvil-libraries.md) — Initial specification for the Runvil Libraries monorepo.
 - [libs](https://github.com/runvil/libs) — modular reusable libraries hosting `core` and `term`.
 - Project `README.md` for building and testing instructions.

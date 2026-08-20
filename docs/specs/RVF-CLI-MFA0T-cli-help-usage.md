@@ -65,10 +65,10 @@ and operators likewise have no stable way to interrogate a CLI's surface.
 
 | SpecID      | RVF-MFA0T                              |
 | --------- | ----------------------------------------------- |
-| [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) | CLI Application Model                |
-| [RVF-NPFSE](./RVF-cli-NPFSE-cli-output-formatting.md) | CLI Output & Formatting             |
-| [RVL-R934Y](https://github.com/runvil/libs/blob/main/docs/specs/RVL-term-R934Y-terminal-io-rendering.md) | Terminal I/O & Rendering            |
+| [RVF-5XJFC](./RVF-CLI-5XJFC-cli-application-model.md) | CLI Application Model                |
+| [RVF-NPFSE](./RVF-CLI-NPFSE-cli-output-formatting.md) | CLI Output & Formatting             |
+| [RVL-R934Y](https://github.com/runvil/libs/blob/main/docs/specs/RVL-TERM-R934Y-terminal-io-rendering.md) | Terminal I/O & Rendering            |
 
 ## 9. References
 
-- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.
+- [RVF-CMBZJ](./RVF-META-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.

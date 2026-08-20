@@ -78,10 +78,10 @@ streams, and human users get noisy, inconsistent output.
 
 | SpecID      | RVF-NPFSE                              |
 | --------- | ----------------------------------------------- |
-| [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) | CLI Application Model                |
-| [RVF-MFA0T](./RVF-cli-MFA0T-cli-help-usage.md)         | CLI Help & Usage                     |
-| [RVL-R934Y](https://github.com/runvil/libs/blob/main/docs/specs/RVL-term-R934Y-terminal-io-rendering.md) | Terminal I/O & Rendering            |
+| [RVF-5XJFC](./RVF-CLI-5XJFC-cli-application-model.md) | CLI Application Model                |
+| [RVF-MFA0T](./RVF-CLI-MFA0T-cli-help-usage.md)         | CLI Help & Usage                     |
+| [RVL-R934Y](https://github.com/runvil/libs/blob/main/docs/specs/RVL-TERM-R934Y-terminal-io-rendering.md) | Terminal I/O & Rendering            |
 
 ## 9. References
 
-- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.
+- [RVF-CMBZJ](./RVF-META-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.

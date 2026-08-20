@@ -99,6 +99,6 @@ has no content layer. Authors must write raw HTML in templates or config.
 
 | SpecID      | RVF-D57UK                              |
 | --------- | ----------------------------------------------- |
-| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Core SSG (components, layouts, scoped CSS) |
-| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Shared page model (SSR = static parity) |
-| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | Hydration-ready output |
+| [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md) | Core SSG (components, layouts, scoped CSS) |
+| [RVF-0F2EB](./RVF-WEB-0F2EB-server-frontend-pipeline.md) | Shared page model (SSR = static parity) |
+| [RVF-F2TQC](./RVF-JS-F2TQC-js-ts-framework-integration.md) | Hydration-ready output |

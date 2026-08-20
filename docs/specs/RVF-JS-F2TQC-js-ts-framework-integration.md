@@ -110,14 +110,14 @@ real integration will ever fit. The framework needs explicit, documented seams:
 
 | SpecID      | RVF-F2TQC                              |
 | --------- | ----------------------------------------------- |
-| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) | Layout & UI System (§5.10 framework-neutral output) |
-| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Static Site Generator (hydratable-ready export) |
-| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline (SSR seam) |
-| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md) | HTTP & API Pipeline (shared JSON contract) |
-| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (client asset serving) |
-| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework (host) |
+| [RVF-PPUWX](./RVF-UI-PPUWX-layout-ui-system.md) | Layout & UI System (§5.10 framework-neutral output) |
+| [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md) | Static Site Generator (hydratable-ready export) |
+| [RVF-0F2EB](./RVF-WEB-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline (SSR seam) |
+| [RVF-230KF](./RVF-HTTP-230KF-http-api-pipeline.md) | HTTP & API Pipeline (shared JSON contract) |
+| [RVF-C4087](./RVF-APP-C4087-runvil-app-framework.md) | Runvil App Framework (client asset serving) |
+| [RVF-M07QS](./RVF-WEB-M07QS-runvil-web-framework.md) | Runvil Web Framework (host) |
 
 ## 9. References
 
-- [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) §1.1 — design constraints survey (Buffalo npm lock-in avoided).
+- [RVF-PPUWX](./RVF-UI-PPUWX-layout-ui-system.md) §1.1 — design constraints survey (Buffalo npm lock-in avoided).
 - Astro "islands architecture" (concept reference only; no adoption implied).

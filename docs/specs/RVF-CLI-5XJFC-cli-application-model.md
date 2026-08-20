@@ -85,12 +85,12 @@ codes), duplicated boilerplate, and logic that is awkward to test in isolation.
 
 | SpecID      | RVF-5XJFC                              |
 | --------- | ----------------------------------------------- |
-| [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) | Runvil Meta-Framework                 |
-| [RVF-MFA0T](./RVF-cli-MFA0T-cli-help-usage.md)         | CLI Help & Usage                     |
-| [RVF-KAKQL](./RVF-cli-KAKQL-cli-errors-diagnostics.md) | CLI Errors & Diagnostics             |
-| [RVL-W0J2X](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-W0J2X-errors-exit-codes.md) | Core Errors & Exit Codes |
+| [RVF-CMBZJ](./RVF-META-CMBZJ-runvil-meta-framework.md) | Runvil Meta-Framework                 |
+| [RVF-MFA0T](./RVF-CLI-MFA0T-cli-help-usage.md)         | CLI Help & Usage                     |
+| [RVF-KAKQL](./RVF-CLI-KAKQL-cli-errors-diagnostics.md) | CLI Errors & Diagnostics             |
+| [RVL-W0J2X](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CORE-W0J2X-errors-exit-codes.md) | Core Errors & Exit Codes |
 
 ## 9. References
 
-- [RVL-M1ZKS](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-M1ZKS-runvil-libraries.md) — Runvil Libraries initial specification.
-- [RVL-R934Y](https://github.com/runvil/libs/blob/main/docs/specs/RVL-term-R934Y-terminal-io-rendering.md) — Terminal I/O & Rendering.
+- [RVL-M1ZKS](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CORE-M1ZKS-runvil-libraries.md) — Runvil Libraries initial specification.
+- [RVL-R934Y](https://github.com/runvil/libs/blob/main/docs/specs/RVL-TERM-R934Y-terminal-io-rendering.md) — Terminal I/O & Rendering.

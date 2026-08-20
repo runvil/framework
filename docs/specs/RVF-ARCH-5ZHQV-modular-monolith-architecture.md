@@ -209,10 +209,10 @@ When a module graduates to a service, the following changes are required:
 
 | SpecID      | RVF-5ZHQV                              |
 | --------- | ----------------------------------------------- |
-| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) |
-| [RVF-C9WLJ](./RVF-di-C9WLJ-app-container-service-providers.md) | App Container & Service Providers |
-| [RVF-CCI0N](./RVF-struct-CCI0N-app-directory-structure.md) | App Project Directory Structure Standard |
-| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
+| [RVF-C4087](./RVF-APP-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) |
+| [RVF-C9WLJ](./RVF-DI-C9WLJ-app-container-service-providers.md) | App Container & Service Providers |
+| [RVF-CCI0N](./RVF-STRUCT-CCI0N-app-directory-structure.md) | App Project Directory Structure Standard |
+| [RVF-230KF](./RVF-HTTP-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
 
 ## 9. References
 

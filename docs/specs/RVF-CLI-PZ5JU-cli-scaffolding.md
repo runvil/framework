@@ -71,10 +71,10 @@ starting point.
 
 | SpecID      | RVF-PZ5JU                              |
 | --------- | ----------------------------------------------- |
-| [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) | CLI Application Model                |
-| [RVF-FGNZ9](./RVF-cli-FGNZ9-cli-configuration.md)     | CLI Configuration                    |
-| [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) | Runvil Meta-Framework                |
+| [RVF-5XJFC](./RVF-CLI-5XJFC-cli-application-model.md) | CLI Application Model                |
+| [RVF-FGNZ9](./RVF-CLI-FGNZ9-cli-configuration.md)     | CLI Configuration                    |
+| [RVF-CMBZJ](./RVF-META-CMBZJ-runvil-meta-framework.md) | Runvil Meta-Framework                |
 
 ## 9. References
 
-- [RVL-M1ZKS](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-M1ZKS-runvil-libraries.md) — Runvil Libraries initial specification.
+- [RVL-M1ZKS](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CORE-M1ZKS-runvil-libraries.md) — Runvil Libraries initial specification.

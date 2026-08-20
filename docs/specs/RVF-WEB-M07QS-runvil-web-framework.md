@@ -94,18 +94,18 @@ and site builders cannot share a common static-export primitive.
 
 | SpecID      | RVF-M07QS                              |
 | --------- | ----------------------------------------------- |
-| [RVF-V0TMZ](./RVF-ui-V0TMZ-web-theming-system.md)        | Web Theming System               |
-| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md)     | Static Site Generator            |
-| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md)         | HTTP & API Pipeline              |
-| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md)  | Server & Frontend Rendering Pipeline |
-| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md)      | Runvil App Framework             |
-| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
-| [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) | CLI Application Model                |
-| [RVF-NPFSE](./RVF-cli-NPFSE-cli-output-formatting.md) | CLI Output & Formatting              |
-| [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) | Runvil Meta-Framework                |
+| [RVF-V0TMZ](./RVF-UI-V0TMZ-web-theming-system.md)        | Web Theming System               |
+| [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md)     | Static Site Generator            |
+| [RVF-230KF](./RVF-HTTP-230KF-http-api-pipeline.md)         | HTTP & API Pipeline              |
+| [RVF-0F2EB](./RVF-WEB-0F2EB-server-frontend-pipeline.md)  | Server & Frontend Rendering Pipeline |
+| [RVF-C4087](./RVF-APP-C4087-runvil-app-framework.md)      | Runvil App Framework             |
+| [RVF-F2TQC](./RVF-JS-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
+| [RVF-5XJFC](./RVF-CLI-5XJFC-cli-application-model.md) | CLI Application Model                |
+| [RVF-NPFSE](./RVF-CLI-NPFSE-cli-output-formatting.md) | CLI Output & Formatting              |
+| [RVF-CMBZJ](./RVF-META-CMBZJ-runvil-meta-framework.md) | Runvil Meta-Framework                |
 
 ## 9. References
 
-- [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) — CLI Application Model (framework entry patterns).
-- [RVL-M1ZKS](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-M1ZKS-runvil-libraries.md) — Runvil Libraries initial specification.
-- [RVL-R934Y](https://github.com/runvil/libs/blob/main/docs/specs/RVL-term-R934Y-terminal-io-rendering.md) — Terminal I/O & Rendering.
+- [RVF-5XJFC](./RVF-CLI-5XJFC-cli-application-model.md) — CLI Application Model (framework entry patterns).
+- [RVL-M1ZKS](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CORE-M1ZKS-runvil-libraries.md) — Runvil Libraries initial specification.
+- [RVL-R934Y](https://github.com/runvil/libs/blob/main/docs/specs/RVL-TERM-R934Y-terminal-io-rendering.md) — Terminal I/O & Rendering.

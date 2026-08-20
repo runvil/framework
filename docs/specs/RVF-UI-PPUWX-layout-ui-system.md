@@ -237,13 +237,13 @@ hydration/islands possible later **without changing server markup or config**.
 
 | SpecID      | RVF-PPUWX                              |
 | --------- | ----------------------------------------------- |
-| [RVF-V0TMZ](./RVF-ui-V0TMZ-web-theming-system.md)        | UI Theming System (provides `ui.Theme`, `ui.Palette`) |
-| [RVF-0Z671](./RVF-ui-0Z671-runvil-ui-framework.md)       | Runvil UI Framework (this spec extends it) |
-| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md)      | Runvil Web Framework (consumer) |
-| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md)     | Static Site Generator (consumer) |
-| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
-| [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-builder-FX9H2-mdbind-site-builder.md) | mdbind Site Builder (consumer) |
+| [RVF-V0TMZ](./RVF-UI-V0TMZ-web-theming-system.md)        | UI Theming System (provides `ui.Theme`, `ui.Palette`) |
+| [RVF-0Z671](./RVF-UI-0Z671-runvil-ui-framework.md)       | Runvil UI Framework (this spec extends it) |
+| [RVF-M07QS](./RVF-WEB-M07QS-runvil-web-framework.md)      | Runvil Web Framework (consumer) |
+| [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md)     | Static Site Generator (consumer) |
+| [RVF-F2TQC](./RVF-JS-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
+| [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-BUILDER-FX9H2-mdbind-site-builder.md) | mdbind Site Builder (consumer) |
 
 ## 9. References
 
-- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.
+- [RVF-CMBZJ](./RVF-META-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.

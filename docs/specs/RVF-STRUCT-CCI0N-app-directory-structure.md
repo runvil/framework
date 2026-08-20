@@ -140,20 +140,20 @@ A `runvil new <name>` app project follows this layout by default:
 
 | SpecID      | RVF-CCI0N                              |
 | --------- | ----------------------------------------------- |
-| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) |
-| [RVF-C9WLJ](./RVF-di-C9WLJ-app-container-service-providers.md) | App Container & Service Providers |
-| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) | Layout & UI System |
-| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Static Site Generator |
-| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
-| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
-| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (client assets) |
-| [RVN-6K41E](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-run-6K41E-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
-| [RVN-RD3WS](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-scaffold-RD3WS-project-scaffolding.md) | Project Scaffolding |
-| [RVN-1QGI2](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-build-1QGI2-project-building.md) | Project Building |
-| [RVL-2X1QZ](https://github.com/runvil/libs/blob/main/docs/specs/RVL-config-2X1QZ-configuration-loading.md) | Configuration Loading |
-| [RVL-LHANF](https://github.com/runvil/libs/blob/main/docs/specs/RVL-validate-LHANF-struct-validation.md) | Struct Validation |
+| [RVF-C4087](./RVF-APP-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) |
+| [RVF-C9WLJ](./RVF-DI-C9WLJ-app-container-service-providers.md) | App Container & Service Providers |
+| [RVF-PPUWX](./RVF-UI-PPUWX-layout-ui-system.md) | Layout & UI System |
+| [RVF-PT8OD](./RVF-SSG-PT8OD-static-site-generator.md) | Static Site Generator |
+| [RVF-0F2EB](./RVF-WEB-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
+| [RVF-230KF](./RVF-HTTP-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
+| [RVF-F2TQC](./RVF-JS-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (client assets) |
+| [RVN-6K41E](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-RUN-6K41E-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
+| [RVN-RD3WS](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-SCAFFOLD-RD3WS-project-scaffolding.md) | Project Scaffolding |
+| [RVN-1QGI2](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-BUILD-1QGI2-project-building.md) | Project Building |
+| [RVL-2X1QZ](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CONFIG-2X1QZ-configuration-loading.md) | Configuration Loading |
+| [RVL-LHANF](https://github.com/runvil/libs/blob/main/docs/specs/RVL-VALIDATE-LHANF-struct-validation.md) | Struct Validation |
 
 ## 9. References
 
-- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework (module architecture).
+- [RVF-CMBZJ](./RVF-META-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework (module architecture).
 - Go standard library `embed`, `internal/`, and `cmd/` project-layout idioms.

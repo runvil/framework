@@ -9,7 +9,7 @@ This directory is the documentation hub for the Runvil Framework monorepo.
 ## Getting Started
 
 - Read the project [README](../README.md) for an overview and build instructions.
-- Review the [initial specification](./specs/RVF-meta-CMBZJ-runvil-meta-framework.md) for the framework's requirements, scope, and roadmap.
+- Review the [initial specification](./specs/RVF-META-CMBZJ-runvil-meta-framework.md) for the framework's requirements, scope, and roadmap.
 
 ## Conventions
 
