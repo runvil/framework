@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-LJWEB                                   |
+| SpecID      | RVF-MFA0T                              |
 | Title       | CLI Help & Usage                            |
 | Status      | Draft                                       |
 | Date        | 2026-08-18                                  |
@@ -63,12 +63,12 @@ and operators likewise have no stable way to interrogate a CLI's surface.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-MFA0T                              |
 | --------- | ----------------------------------------------- |
-| [RVF-M8SSR](./RVF-M8SSR-cli-application-model.md) | CLI Application Model                |
-| [RVF-WXQQ5](./RVF-WXQQ5-cli-output-formatting.md) | CLI Output & Formatting             |
-| [RVL-N459G](https://github.com/runvil/libs/blob/main/docs/specs/RVL-N459G-terminal-io-rendering.md) | Terminal I/O & Rendering            |
+| [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) | CLI Application Model                |
+| [RVF-NPFSE](./RVF-cli-NPFSE-cli-output-formatting.md) | CLI Output & Formatting             |
+| [RVL-R934Y](https://github.com/runvil/libs/blob/main/docs/specs/RVL-term-R934Y-terminal-io-rendering.md) | Terminal I/O & Rendering            |
 
 ## 9. References
 
-- [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.
+- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.

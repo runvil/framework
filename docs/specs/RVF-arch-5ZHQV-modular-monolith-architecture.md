@@ -2,7 +2,7 @@
 
 | Field       | Value                                     |
 | ----------- | ----------------------------------------- |
-| SpecID      | RVF-MODUL                                 |
+| SpecID      | RVF-5ZHQV                              |
 | Title       | Modular Monolith Architecture Default     |
 | Status      | Draft                                     |
 | Date        | 2026-08-19                                |
@@ -12,14 +12,14 @@
 ## 1. Context
 
 Runvil applications are fullstack monoliths serving SSR pages, JSON APIs,
-static sites, and embedded assets from a single binary (RVF-P8RK9). As projects
+static sites, and embedded assets from a single binary (RVF-C4087). As projects
 grow, teams often need to extract bounded contexts into separate services.
 Starting with a **modular monolith** — a single deployable unit with explicit
 internal module boundaries — gives the best of both worlds: simple operations
 today, clean extraction paths tomorrow.
 
 Currently the framework provides a single composition root (`internal/app`) and
-an app container (RVF-D1CNT), but does not prescribe how application code
+an app container (RVF-C9WLJ), but does not prescribe how application code
 organizes into modules. Without a standard module structure, extraction later
 requires painful refactoring.
 
@@ -65,14 +65,14 @@ requires painful refactoring.
 
 ### 5.1 Canonical Module Layout
 
-Inside `internal/` (per RVF-M1XKZ FRK-STR-003), application code organizes
+Inside `internal/` (per RVF-CCI0N FRK-STR-003), application code organizes
 into **modules** — each a candidate for future service extraction.
 
 ```
 internal/
-├── app/                 # composition root (RVF-D1CNT FRK-CNT-012)
+├── app/                 # composition root (RVF-C9WLJ FRK-CNT-012)
 │   └── app.go           # New(cfg) *web.App — wires module providers
-├── config/              # typed config (RVF-M1XKZ FRK-STR-005)
+├── config/              # typed config (RVF-CCI0N FRK-STR-005)
 ├── module/
 │   ├── catalog/         # example: product catalog module
 │   │   ├── domain/      # CONTRACTS — interfaces, DTOs, events (public API)
@@ -83,7 +83,7 @@ internal/
 │   │   ├── impl/        # IMPLEMENTATION — private, not imported outside
 │   │   │   ├── repository.go   # SQL implementation
 │   │   │   ├── service.go      # Business logic
-│   │   │   └── provider.go     # Module provider (RVF-D1CNT)
+│   │   │   └── provider.go     # Module provider (RVF-C9WLJ)
 │   │   └── http/        # HTTP handlers depending ONLY on domain interfaces
 │   ├── order/           # another module (same structure)
 │   └── user/            # another module
@@ -104,11 +104,11 @@ internal/
 |             | **never imported** by other modules. Only the composition root          |          |
 |             | (`internal/app`) and the module's own `http` package may import `impl`. |          |
 | FRK-MOD-004 | HTTP handlers (in `module/http`) depend ONLY on `domain` interfaces,   | Must     |
-|             | receiving implementations via the container (RVF-D1CNT).                |          |
+|             | receiving implementations via the container (RVF-C9WLJ).                |          |
 | FRK-MOD-005 | Cross-module communication uses **domain events** (published via an     | Should   |
 |             | event bus interface in `shared/events`) or direct service calls through |          |
 |             | injected interfaces — never direct `impl` imports.                     |          |
-| FRK-MOD-006 | A module may declare a `Provider` (RVF-D1CNT) in `impl/provider.go`     | Must     |
+| FRK-MOD-006 | A module may declare a `Provider` (RVF-C9WLJ) in `impl/provider.go`     | Must     |
 |             | that registers its implementations and HTTP routes.                    |          |
 
 ### 5.2 Composition Root Wiring
@@ -136,7 +136,7 @@ func New(cfg *config.Config) (*web.App, error) {
 | ----------- | ---------------------------------------------------------------------- | -------- |
 | FRK-MOD-010 | `internal/app` is the **sole** importer of module `impl` packages.     | Must     |
 | FRK-MOD-011 | Module providers are registered in dependency order (shared → domain).  | Must     |
-| FRK-MOD-012 | The container (RVF-D1CNT) is the **only** mechanism for cross-module    | Must     |
+| FRK-MOD-012 | The container (RVF-C9WLJ) is the **only** mechanism for cross-module    | Must     |
 |             | dependency injection; no global state, no `init()` side effects.       |          |
 
 ### 5.3 Shared Kernel
@@ -207,12 +207,12 @@ When a module graduates to a service, the following changes are required:
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-5ZHQV                              |
 | --------- | ----------------------------------------------- |
-| [RVF-P8RK9](./RVF-P8RK9-runvil-app-framework.md) | Runvil App Framework (assembly) |
-| [RVF-D1CNT](./RVF-D1CNT-app-container-service-providers.md) | App Container & Service Providers |
-| [RVF-M1XKZ](./RVF-M1XKZ-app-directory-structure.md) | App Project Directory Structure Standard |
-| [RVF-H3QD8](./RVF-H3QD8-http-api-pipeline.md) | HTTP & API Pipeline |
+| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) |
+| [RVF-C9WLJ](./RVF-di-C9WLJ-app-container-service-providers.md) | App Container & Service Providers |
+| [RVF-CCI0N](./RVF-struct-CCI0N-app-directory-structure.md) | App Project Directory Structure Standard |
+| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
 
 ## 9. References
 

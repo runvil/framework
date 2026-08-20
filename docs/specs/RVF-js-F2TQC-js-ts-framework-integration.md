@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-2TK4X                                   |
+| SpecID      | RVF-F2TQC                              |
 | Title       | JS/TS Framework Integration — Future Bridge |
 | Status      | Draft                                       |
 | Date        | 2026-08-19                                  |
@@ -12,7 +12,7 @@
 ## 1. Context
 
 Runvil ships **zero JavaScript by default**: pages are pure server-rendered HTML
-+ CSS (RVF-PN41Q, RVF-L6NJ5), and the only inline script is the isolated theme
++ CSS (RVF-PT8OD, RVF-0F2EB), and the only inline script is the isolated theme
 toggle. This keeps output fast, secure, and dependency-free — and that default
 stays.
 
@@ -22,13 +22,13 @@ one of them. This spec is the single statement of how the framework stays ready
 for that future: a **framework-agnostic bridge contract** baked into the render
 model, so a client-side framework can be layered on later without changing
 server markup, config, or the existing pipelines. It is the "escape hatch"
-(G12 of RVF-ZK9LQ) for interactivity.
+(G12 of RVF-PPUWX) for interactivity.
 
 ## 2. Problem Statement
 
 If the framework hardcodes its HTML output without a stable contract, adding any
 JS/TS framework later means re-rendering pages, changing component output, or
-forking the pipeline — the exact coupling Runvil rejects (RVF-ZK9LQ §1.1,
+forking the pipeline — the exact coupling Runvil rejects (RVF-PPUWX §1.1,
 Buffalo's npm lock-in). Conversely, if the contract only "exists in spirit", no
 real integration will ever fit. The framework needs explicit, documented seams:
 
@@ -45,7 +45,7 @@ real integration will ever fit. The framework needs explicit, documented seams:
 - G2 — Define a framework-agnostic contract (scope attrs + `data-props` + deterministic HTML + CSS/JS separation) that any JS/TS framework can target.
 - G3 — Guarantee the bridge is **additive**: existing static export, SSR, and API pipelines stay byte-identical without it.
 - G4 — Keep the framework's dependency on JS tooling at zero at compile time; client builds are the project's concern (served as assets).
-- G5 — Share one data contract between server props and the API JSON (RVF-H3QD8) so client-side data fetching and hydration use the same shape.
+- G5 — Share one data contract between server props and the API JSON (RVF-230KF) so client-side data fetching and hydration use the same shape.
 
 ## 4. Non-Goals
 
@@ -71,8 +71,8 @@ real integration will ever fit. The framework needs explicit, documented seams:
 
 | ID          | Requirement                                                       | Priority |
 | ----------- | ----------------------------------------------------------------- | -------- |
-| JSF-010     | Component props must remain JSON-serializable (already enforced by strict JSON decode in RVF-ZK9LQ LAY-104); rendering may optionally emit the props as `data-props` JSON on the root element for client mounting. | Must |
-| JSF-011     | The `data-props` JSON shape uses the same field naming as the API JSON contract (RVF-H3QD8), so hydration data and fetched data are interchangeable. | Should |
+| JSF-010     | Component props must remain JSON-serializable (already enforced by strict JSON decode in RVF-PPUWX LAY-104); rendering may optionally emit the props as `data-props` JSON on the root element for client mounting. | Must |
+| JSF-011     | The `data-props` JSON shape uses the same field naming as the API JSON contract (RVF-230KF), so hydration data and fetched data are interchangeable. | Should |
 | JSF-012     | Props emission is opt-in per component/page and off by default; enabling it must not change the rendered HTML except for the `data-props` attribute. | Must |
 
 ### 5.3 Client Integration Seam
@@ -82,7 +82,7 @@ real integration will ever fit. The framework needs explicit, documented seams:
 | JSF-020     | The render pipeline exposes a no-op extension hook by default (e.g. a per-page script/mount slot) that a future client layer can fill without touching server rendering. | Should |
 | JSF-021     | Layouts/pages must have a defined injection point for `<script>` tags and mount roots (`<div id="app">`-style), served as static assets via `App.Static`/SSG assets. | Must |
 | JSF-022     | A project may ship compiled client bundles (JS/TS output) under `public/` or `site/` and serve them; the framework must not transform, cache-bust, or block them. | Must |
-| JSF-023     | The future client layer plugs in as a registry/layout additive extension (RVF-ZK9LQ §5.10, RVF-L6NJ5 FRK-SRV-042), never by forking the pipeline (G12). | Must |
+| JSF-023     | The future client layer plugs in as a registry/layout additive extension (RVF-PPUWX §5.10, RVF-0F2EB FRK-SRV-042), never by forking the pipeline (G12). | Must |
 
 ### 5.4 Documentation & Testing
 
@@ -108,16 +108,16 @@ real integration will ever fit. The framework needs explicit, documented seams:
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-F2TQC                              |
 | --------- | ----------------------------------------------- |
-| [RVF-ZK9LQ](./RVF-ZK9LQ-layout-ui-system.md) | Layout & UI System (§5.10 framework-neutral output) |
-| [RVF-PN41Q](./RVF-PN41Q-static-site-generator.md) | Static Site Generator (hydratable-ready export) |
-| [RVF-L6NJ5](./RVF-L6NJ5-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline (SSR seam) |
-| [RVF-H3QD8](./RVF-H3QD8-http-api-pipeline.md) | HTTP & API Pipeline (shared JSON contract) |
-| [RVF-P8RK9](./RVF-P8RK9-runvil-app-framework.md) | Runvil App Framework (client asset serving) |
-| [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md) | Runvil Web Framework (host) |
+| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) | Layout & UI System (§5.10 framework-neutral output) |
+| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Static Site Generator (hydratable-ready export) |
+| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline (SSR seam) |
+| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md) | HTTP & API Pipeline (shared JSON contract) |
+| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (client asset serving) |
+| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework (host) |
 
 ## 9. References
 
-- [RVF-ZK9LQ](./RVF-ZK9LQ-layout-ui-system.md) §1.1 — design constraints survey (Buffalo npm lock-in avoided).
+- [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) §1.1 — design constraints survey (Buffalo npm lock-in avoided).
 - Astro "islands architecture" (concept reference only; no adoption implied).

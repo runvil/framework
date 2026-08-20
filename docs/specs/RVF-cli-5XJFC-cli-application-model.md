@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-M8SSR                                   |
+| SpecID      | RVF-5XJFC                              |
 | Title       | CLI Application Model                       |
 | Status      | Draft                                       |
 | Date        | 2026-08-18                                  |
@@ -83,14 +83,14 @@ codes), duplicated boilerplate, and logic that is awkward to test in isolation.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-5XJFC                              |
 | --------- | ----------------------------------------------- |
-| [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) | Runvil Meta-Framework                 |
-| [RVF-LJWEB](./RVF-LJWEB-cli-help-usage.md)         | CLI Help & Usage                     |
-| [RVF-QZTY2](./RVF-QZTY2-cli-errors-diagnostics.md) | CLI Errors & Diagnostics             |
-| [RVL-CHBZ4](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CHBZ4-errors-exit-codes.md) | Core Errors & Exit Codes |
+| [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) | Runvil Meta-Framework                 |
+| [RVF-MFA0T](./RVF-cli-MFA0T-cli-help-usage.md)         | CLI Help & Usage                     |
+| [RVF-KAKQL](./RVF-cli-KAKQL-cli-errors-diagnostics.md) | CLI Errors & Diagnostics             |
+| [RVL-W0J2X](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-W0J2X-errors-exit-codes.md) | Core Errors & Exit Codes |
 
 ## 9. References
 
-- [RVL-4Y8UP](https://github.com/runvil/libs/blob/main/docs/specs/RVL-4Y8UP-runvil-libraries.md) — Runvil Libraries initial specification.
-- [RVL-N459G](https://github.com/runvil/libs/blob/main/docs/specs/RVL-N459G-terminal-io-rendering.md) — Terminal I/O & Rendering.
+- [RVL-M1ZKS](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-M1ZKS-runvil-libraries.md) — Runvil Libraries initial specification.
+- [RVL-R934Y](https://github.com/runvil/libs/blob/main/docs/specs/RVL-term-R934Y-terminal-io-rendering.md) — Terminal I/O & Rendering.

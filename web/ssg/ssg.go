@@ -328,13 +328,34 @@ func (s *Site) renderComponent(name string, data any) (template.HTML, error) {
 		return scopeFragment(name, buf.String())
 	}
 	if s.reg != nil {
-		if out, err := s.reg.Render(name, data); err == nil {
+		if out, err := s.reg.Render(name, componentProps(data)); err == nil {
 			return out, nil
 		} else if !strings.HasPrefix(err.Error(), "ui: undefined component") {
 			return "", err
 		}
 	}
 	return "", fmt.Errorf("ssg: undefined component %q", name)
+}
+
+// componentProps strips framework-injected site-wide control keys from a data
+// value before it reaches a typed registry component. Templates need the full
+// site data (Title, Theme, Collections, …), but typed components decode props
+// strictly, so framework keys must not bubble through as unknown fields.
+func componentProps(data any) any {
+	m, ok := data.(map[string]any)
+	if !ok {
+		return data
+	}
+	out := make(map[string]any, len(m))
+	for k, v := range m {
+		switch k {
+		case "Title", "Description", "Theme", "IncludeDrafts", "IncludeFuture", "Collections":
+			continue
+		default:
+			out[k] = v
+		}
+	}
+	return out
 }
 
 // renderPage renders a page's root component inside its layout.

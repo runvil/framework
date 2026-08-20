@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-ZK9LQ                                   |
+| SpecID      | RVF-PPUWX                              |
 | Title       | Runvil Layout & UI System                   |
 | Status      | Draft                                       |
 | Date        | 2026-08-18                                  |
@@ -87,7 +87,7 @@ These are currently hardcoded in each project's YAML or Go templates, leading to
 ## 4. Non-Goals
 
 - **NG1** — A full CSS framework (no utility classes, no component variants beyond what's needed for layout)
-- **NG2** — JavaScript behavior beyond the existing theme toggle **in this phase**; the component output contract stays JS-framework-agnostic (§5.10, RVF-2TK4X) so client-side JS/TS frameworks can be added later without changing markup
+- **NG2** — JavaScript behavior beyond the existing theme toggle **in this phase**; the component output contract stays JS-framework-agnostic (§5.10, RVF-F2TQC) so client-side JS/TS frameworks can be added later without changing markup
 - **NG3** — Replacing `html/template` — components render to `template.HTML` strings
 - **NG4** — Runtime layout mutation; layouts are composed at build/render time
 - **NG5** — A new templating DSL/parser; authoring stays Go-native (`html/template`) and config-driven (data props)
@@ -202,7 +202,7 @@ tree — how a page is composed — lives here and in Go code, **never** in conf
 
 ### 5.10 Framework-Neutral Output (Future JS/TS Readiness)
 
-Zero-JS is the default (RVF-2TK4X), but the output contract must never block a
+Zero-JS is the default (RVF-F2TQC), but the output contract must never block a
 future client-side JS/TS framework. These requirements pin the seams that make
 hydration/islands possible later **without changing server markup or config**.
 
@@ -235,15 +235,15 @@ hydration/islands possible later **without changing server markup or config**.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-PPUWX                              |
 | --------- | ----------------------------------------------- |
-| [RVF-5K7PZ](./RVF-5K7PZ-web-theming-system.md)        | UI Theming System (provides `ui.Theme`, `ui.Palette`) |
-| [RVF-HQ7XW](./RVF-HQ7XW-runvil-ui-framework.md)       | Runvil UI Framework (this spec extends it) |
-| [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md)      | Runvil Web Framework (consumer) |
-| [RVF-PN41Q](./RVF-PN41Q-static-site-generator.md)     | Static Site Generator (consumer) |
-| [RVF-2TK4X](./RVF-2TK4X-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
-| [RVM-5F9TL](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-5F9TL-mdbind-site-builder.md) | mdbind Site Builder (consumer) |
+| [RVF-V0TMZ](./RVF-ui-V0TMZ-web-theming-system.md)        | UI Theming System (provides `ui.Theme`, `ui.Palette`) |
+| [RVF-0Z671](./RVF-ui-0Z671-runvil-ui-framework.md)       | Runvil UI Framework (this spec extends it) |
+| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md)      | Runvil Web Framework (consumer) |
+| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md)     | Static Site Generator (consumer) |
+| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
+| [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-builder-FX9H2-mdbind-site-builder.md) | mdbind Site Builder (consumer) |
 
 ## 9. References
 
-- [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.
+- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.

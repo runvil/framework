@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-P8RK9                                   |
+| SpecID      | RVF-C4087                              |
 | Title       | Runvil App Framework — Monolith Assembly    |
 | Status      | Draft                                       |
 | Date        | 2026-08-19                                  |
@@ -11,8 +11,8 @@
 
 ## 1. Context
 
-The full stack is now addressable: static sites (RVF-PN41Q), JSON APIs
-(RVF-H3QD8), and server-rendered frontends (RVF-L6NJ5). **Monolith Assembly**
+The full stack is now addressable: static sites (RVF-PT8OD), JSON APIs
+(RVF-230KF), and server-rendered frontends (RVF-0F2EB). **Monolith Assembly**
 defines how a *project* becomes one runnable application: the project's
 `main.go` composes `web.App` from routing, middleware, pages, static assets, and
 configuration, then ships as a single binary that serves HTML + API + assets.
@@ -31,13 +31,13 @@ Runvil can build sites but not *applications*. A fullstack monolith needs:
   config-only model cannot host.
 - Server-rendered pages and JSON APIs in one binary.
 - Production-ready lifecycle beyond `http.ListenAndServe`.
-- A single, documented assembly point so `runvil run`/`dev` (RVN-K2SQ7) can
+- A single, documented assembly point so `runvil run`/`dev` (RVN-6K41E) can
   drive any project predictably.
 
 Existing conventions were built for static delivery; extending them with a
 small, explicit `main.go` per app keeps projects idiomatic without reintroducing
 the "magic main" that other fullstack Go frameworks were criticized for
-(RVF-ZK9LQ §1.1).
+(RVF-PPUWX §1.1).
 
 ## 3. Goals
 
@@ -50,7 +50,7 @@ the "magic main" that other fullstack Go frameworks were criticized for
 
 ## 4. Non-Goals
 
-- NG1 — Generating `main.go` or any build-time code (NG6 of RVF-ZK9LQ still holds).
+- NG1 — Generating `main.go` or any build-time code (NG6 of RVF-PPUWX still holds).
 - NG2 — A plugin/hot-swap system for app components.
 - NG3 — Microservices orchestration; this is single-process monolith.
 - NG4 — Storage/ORM coupling: DB choice stays a project decision.
@@ -71,27 +71,27 @@ the "magic main" that other fullstack Go frameworks were criticized for
 
 | ID          | Requirement                                                       | Priority |
 | ----------- | ----------------------------------------------------------------- | -------- |
-| FRK-APP-010 | Provide `web.NewApp()` as the sole assembly entry; middleware/API via RVF-H3QD8, pages via RVF-L6NJ5. | Must |
-| FRK-APP-011 | App configuration loads through `libs/config` (RVL-X7C4M) and validates through `libs/validate` (RVL-B9TW2) before use. | Must |
-| FRK-APP-012 | Config precedence is env > file > zero (as specified in RVL-X7C4M §5.3). | Must |
+| FRK-APP-010 | Provide `web.NewApp()` as the sole assembly entry; middleware/API via RVF-230KF, pages via RVF-0F2EB. | Must |
+| FRK-APP-011 | App configuration loads through `libs/config` (RVL-2X1QZ) and validates through `libs/validate` (RVL-LHANF) before use. | Must |
+| FRK-APP-012 | Config precedence is env > file > zero (as specified in RVL-2X1QZ §5.3). | Must |
 | FRK-APP-013 | A startup configuration/validation error exits non-zero with a clear message (mapped through `core` exit codes). | Must |
 
 ### 5.3 Rendering & Assets
 
 | ID          | Requirement                                                       | Priority |
 | ----------- | ----------------------------------------------------------------- | -------- |
-| FRK-APP-020 | App pages reuse the `ui` registry (RVF-ZK9LQ): built-in components out of the box, custom components registerable. | Must |
-| FRK-APP-021 | Apps may embed the SSG-exported `site/` (built via RVF-PN41Q) and serve it with `App.Static`, keeping docs/marketing pages static. | Should |
-| FRK-APP-022 | All frontend rendering flows through the unified SSR render path (RVF-L6NJ5 FRK-SRV-014). | Must |
+| FRK-APP-020 | App pages reuse the `ui` registry (RVF-PPUWX): built-in components out of the box, custom components registerable. | Must |
+| FRK-APP-021 | Apps may embed the SSG-exported `site/` (built via RVF-PT8OD) and serve it with `App.Static`, keeping docs/marketing pages static. | Should |
+| FRK-APP-022 | All frontend rendering flows through the unified SSR render path (RVF-0F2EB FRK-SRV-014). | Must |
 | FRK-APP-050 | Apps may ship compiled client bundles (JS/TS output) under `public/` or `site/` and serve them via `App.Static`; the framework never compiles, transforms, or blocks them. | Must |
-| FRK-APP-051 | The default monolith remains zero-JS; a client integration is an opt-in, additive layer (RVF-2TK4X) that never alters server rendering or the theme-toggle default. | Must |
+| FRK-APP-051 | The default monolith remains zero-JS; a client integration is an opt-in, additive layer (RVF-F2TQC) that never alters server rendering or the theme-toggle default. | Must |
 | FRK-APP-052 | `examples/app` must demonstrate serving a static `public/` with a `<script>` mount point alongside server-rendered pages, kept byte-identical without the script. | Should |
 
 ### 5.4 Lifecycle & Deployment
 
 | ID          | Requirement                                                       | Priority |
 | ----------- | ----------------------------------------------------------------- | -------- |
-| FRK-APP-030 | `main.go` calls `App.Run(addr)` for graceful start/shutdown (RVF-L6NJ5 FRK-SRV-021). | Must |
+| FRK-APP-030 | `main.go` calls `App.Run(addr)` for graceful start/shutdown (RVF-0F2EB FRK-SRV-021). | Must |
 | FRK-APP-031 | The deliverable is one binary: embedded assets + API + SSR on one listener. | Must |
 | FRK-APP-032 | Every exported identifier composing apps has a doc comment (rendered by `go doc`). | Must |
 
@@ -113,25 +113,25 @@ the "magic main" that other fullstack Go frameworks were criticized for
 ## 7. Success Criteria
 
 - S1 — `examples/app` starts from `go run .`, serves a dynamic page, a JSON endpoint, and an embedded static page on one port.
-- S2 — `runvil identify` (RVN-K2SQ7) classifies the example as an *app* automatically.
-- S3 — Rebuilding `site/` with RVF-PN41Q and embedding it does not change app startup.
+- S2 — `runvil identify` (RVN-6K41E) classifies the example as an *app* automatically.
+- S3 — Rebuilding `site/` with RVF-PT8OD and embedding it does not change app startup.
 - S4 — A misconfigured app exits non-zero with a before-first-request error message.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-C4087                              |
 | --------- | ----------------------------------------------- |
-| [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md) | Runvil Web Framework (host) |
-| [RVF-H3QD8](./RVF-H3QD8-http-api-pipeline.md) | HTTP & API Pipeline |
-| [RVF-L6NJ5](./RVF-L6NJ5-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
-| [RVF-PN41Q](./RVF-PN41Q-static-site-generator.md) | Static Site Generator (site/ export) |
-| [RVF-ZK9LQ](./RVF-ZK9LQ-layout-ui-system.md) | Layout & UI System |
-| [RVF-2TK4X](./RVF-2TK4X-js-ts-framework-integration.md) | JS/TS Framework Integration (client asset seam) |
-| [RVN-K2SQ7](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-K2SQ7-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
-| [RVL-X7C4M](https://github.com/runvil/libs/blob/main/docs/specs/RVL-X7C4M-configuration-loading.md) | Configuration Loading |
-| [RVL-B9TW2](https://github.com/runvil/libs/blob/main/docs/specs/RVL-B9TW2-struct-validation.md) | Struct Validation |
+| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework (host) |
+| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
+| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
+| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Static Site Generator (site/ export) |
+| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) | Layout & UI System |
+| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (client asset seam) |
+| [RVN-6K41E](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-run-6K41E-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
+| [RVL-2X1QZ](https://github.com/runvil/libs/blob/main/docs/specs/RVL-config-2X1QZ-configuration-loading.md) | Configuration Loading |
+| [RVL-LHANF](https://github.com/runvil/libs/blob/main/docs/specs/RVL-validate-LHANF-struct-validation.md) | Struct Validation |
 
 ## 9. References
 
-- [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Meta-Framework (module architecture).
+- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework (module architecture).
 - Go stdlib `net/http`, `os/signal`.

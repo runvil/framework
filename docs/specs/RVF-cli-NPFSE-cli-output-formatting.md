@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-WXQQ5                                   |
+| SpecID      | RVF-NPFSE                              |
 | Title       | CLI Output & Formatting                     |
 | Status      | Draft                                       |
 | Date        | 2026-08-18                                  |
@@ -76,12 +76,12 @@ streams, and human users get noisy, inconsistent output.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-NPFSE                              |
 | --------- | ----------------------------------------------- |
-| [RVF-M8SSR](./RVF-M8SSR-cli-application-model.md) | CLI Application Model                |
-| [RVF-LJWEB](./RVF-LJWEB-cli-help-usage.md)         | CLI Help & Usage                     |
-| [RVL-N459G](https://github.com/runvil/libs/blob/main/docs/specs/RVL-N459G-terminal-io-rendering.md) | Terminal I/O & Rendering            |
+| [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) | CLI Application Model                |
+| [RVF-MFA0T](./RVF-cli-MFA0T-cli-help-usage.md)         | CLI Help & Usage                     |
+| [RVL-R934Y](https://github.com/runvil/libs/blob/main/docs/specs/RVL-term-R934Y-terminal-io-rendering.md) | Terminal I/O & Rendering            |
 
 ## 9. References
 
-- [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.
+- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.

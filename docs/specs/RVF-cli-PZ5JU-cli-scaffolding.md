@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-EHVF8                                   |
+| SpecID      | RVF-PZ5JU                              |
 | Title       | CLI Scaffolding                             |
 | Status      | Draft                                       |
 | Date        | 2026-08-18                                  |
@@ -69,12 +69,12 @@ starting point.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-PZ5JU                              |
 | --------- | ----------------------------------------------- |
-| [RVF-M8SSR](./RVF-M8SSR-cli-application-model.md) | CLI Application Model                |
-| [RVF-UUQ3X](./RVF-UUQ3X-cli-configuration.md)     | CLI Configuration                    |
-| [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) | Runvil Meta-Framework                |
+| [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) | CLI Application Model                |
+| [RVF-FGNZ9](./RVF-cli-FGNZ9-cli-configuration.md)     | CLI Configuration                    |
+| [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) | Runvil Meta-Framework                |
 
 ## 9. References
 
-- [RVL-4Y8UP](https://github.com/runvil/libs/blob/main/docs/specs/RVL-4Y8UP-runvil-libraries.md) — Runvil Libraries initial specification.
+- [RVL-M1ZKS](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-M1ZKS-runvil-libraries.md) — Runvil Libraries initial specification.

@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-HQ7XW                                   |
+| SpecID      | RVF-0Z671                              |
 | Title       | Runvil UI Framework                         |
 | Status      | Draft                                       |
 | Date        | 2026-08-18                                  |
@@ -65,13 +65,13 @@ drift apart.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-0Z671                              |
 | --------- | ----------------------------------------------- |
-| [RVF-5K7PZ](./RVF-5K7PZ-web-theming-system.md) | Web Theming System (moved to ui) |
-| [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md) | Runvil Web Framework             |
-| [RVF-PN41Q](./RVF-PN41Q-static-site-generator.md) | Static Site Generator            |
-| [RVM-5F9TL](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-5F9TL-mdbind-site-builder.md) | mdbind Site Builder |
+| [RVF-V0TMZ](./RVF-ui-V0TMZ-web-theming-system.md) | Web Theming System (moved to ui) |
+| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework             |
+| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Static Site Generator            |
+| [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-builder-FX9H2-mdbind-site-builder.md) | mdbind Site Builder |
 
 ## 9. References
 
-- [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Framework initial specification.
+- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Framework initial specification.

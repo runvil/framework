@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-QOFJK                                   |
+| SpecID      | RVF-CMBZJ                              |
 | Title       | Runvil Meta-Framework — Initial Specification |
 | Status      | Draft                                       |
 | Date        | 2026-08-18                                  |
@@ -127,17 +127,17 @@ Each phase is additive and must not break the previous phases.
 
 ## 10. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-CMBZJ                              |
 | --------- | ----------------------------------------------- |
-| [RVF-M8SSR](./RVF-M8SSR-cli-application-model.md) | CLI Application Model                |
-| [RVF-LJWEB](./RVF-LJWEB-cli-help-usage.md)         | CLI Help & Usage                     |
-| [RVF-WXQQ5](./RVF-WXQQ5-cli-output-formatting.md) | CLI Output & Formatting              |
-| [RVF-QZTY2](./RVF-QZTY2-cli-errors-diagnostics.md) | CLI Errors & Diagnostics             |
-| [RVF-UUQ3X](./RVF-UUQ3X-cli-configuration.md)     | CLI Configuration                    |
-| [RVF-EHVF8](./RVF-EHVF8-cli-scaffolding.md)       | CLI Scaffolding                      |
+| [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) | CLI Application Model                |
+| [RVF-MFA0T](./RVF-cli-MFA0T-cli-help-usage.md)         | CLI Help & Usage                     |
+| [RVF-NPFSE](./RVF-cli-NPFSE-cli-output-formatting.md) | CLI Output & Formatting              |
+| [RVF-KAKQL](./RVF-cli-KAKQL-cli-errors-diagnostics.md) | CLI Errors & Diagnostics             |
+| [RVF-FGNZ9](./RVF-cli-FGNZ9-cli-configuration.md)     | CLI Configuration                    |
+| [RVF-PZ5JU](./RVF-cli-PZ5JU-cli-scaffolding.md)       | CLI Scaffolding                      |
 
 ## 11. References
 
-- [Runvil Libraries — RVL-4Y8UP](https://github.com/runvil/libs/blob/main/docs/specs/RVL-4Y8UP-runvil-libraries.md) — Initial specification for the Runvil Libraries monorepo.
+- [Runvil Libraries — RVL-M1ZKS](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-M1ZKS-runvil-libraries.md) — Initial specification for the Runvil Libraries monorepo.
 - [libs](https://github.com/runvil/libs) — modular reusable libraries hosting `core` and `term`.
 - Project `README.md` for building and testing instructions.

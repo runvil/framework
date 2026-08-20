@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-UUQ3X                                   |
+| SpecID      | RVF-FGNZ9                              |
 | Title       | CLI Configuration                          |
 | Status      | Draft                                       |
 | Date        | 2026-08-18                                  |
@@ -74,12 +74,12 @@ coercion/validation code that stdlib `os` and `strconv` already cover.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-FGNZ9                              |
 | --------- | ----------------------------------------------- |
-| [RVF-M8SSR](./RVF-M8SSR-cli-application-model.md) | CLI Application Model                |
-| [RVF-QZTY2](./RVF-QZTY2-cli-errors-diagnostics.md) | CLI Errors & Diagnostics             |
-| [RVF-EHVF8](./RVF-EHVF8-cli-scaffolding.md)         | CLI Scaffolding                      |
+| [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) | CLI Application Model                |
+| [RVF-KAKQL](./RVF-cli-KAKQL-cli-errors-diagnostics.md) | CLI Errors & Diagnostics             |
+| [RVF-PZ5JU](./RVF-cli-PZ5JU-cli-scaffolding.md)         | CLI Scaffolding                      |
 
 ## 9. References
 
-- [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.
+- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.

@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-QZTY2                                   |
+| SpecID      | RVF-KAKQL                              |
 | Title       | CLI Errors & Diagnostics                    |
 | Status      | Draft                                       |
 | Date        | 2026-08-18                                  |
@@ -70,12 +70,12 @@ and users lack quick, structured diagnostics.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-KAKQL                              |
 | --------- | ----------------------------------------------- |
-| [RVF-M8SSR](./RVF-M8SSR-cli-application-model.md) | CLI Application Model                |
-| [RVF-WXQQ5](./RVF-WXQQ5-cli-output-formatting.md) | CLI Output & Formatting             |
-| [RVL-CHBZ4](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CHBZ4-errors-exit-codes.md) | Core Errors & Exit Codes            |
+| [RVF-5XJFC](./RVF-cli-5XJFC-cli-application-model.md) | CLI Application Model                |
+| [RVF-NPFSE](./RVF-cli-NPFSE-cli-output-formatting.md) | CLI Output & Formatting             |
+| [RVL-W0J2X](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-W0J2X-errors-exit-codes.md) | Core Errors & Exit Codes            |
 
 ## 9. References
 
-- [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.
+- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework initial specification.

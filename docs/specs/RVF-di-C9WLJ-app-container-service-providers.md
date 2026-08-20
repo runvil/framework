@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-D1CNT                                   |
+| SpecID      | RVF-C9WLJ                              |
 | Title       | App Container & Service Providers           |
 | Status      | Draft                                       |
 | Date        | 2026-08-19                                  |
@@ -11,7 +11,7 @@
 
 ## 1. Context
 
-Web `App` assembly (RVF-P8RK9) composes routes, pages, and assets, but it
+Web `App` assembly (RVF-C4087) composes routes, pages, and assets, but it
 does not answer "who builds the data layer, the config, the clients, and in
 what order?". Applications growing beyond a hello-page need a **composition
 root** — one place that defines every dependency, how it is constructed, and
@@ -24,8 +24,8 @@ the idiomatic Go mechanism to centralize application control; enable
 dependency injection; make construction order and failures observable;
 allow data mocking; and keep the assembly deterministic and testable. It
 lives in the framework (`app` package) and integrates with the canonical
-layout (RVF-M1XKZ), the `web.App` (RVF-P8RK9), and configuration/validation
-(RVL-X7C4M, RVL-B9TW2).
+layout (RVF-CCI0N), the `web.App` (RVF-C4087), and configuration/validation
+(RVL-2X1QZ, RVL-LHANF).
 
 ## 2. Problem Statement
 
@@ -57,7 +57,7 @@ that is built and resolved at a single, explicit composition root.
 ## 4. Non-Goals
 
 - NG1 — Reflection-based auto-wiring from struct tags or filesystem scanning
-  (protected by RVF-P8RK9 FRK-APP-004).
+  (protected by RVF-C4087 FRK-APP-004).
 - NG2 — A runtime "hive" or plugin/kernel system; providers are plain Go.
 - NG3 — Orchestrating multiple processes; this serves the single-process
   monolith.
@@ -91,13 +91,13 @@ that is built and resolved at a single, explicit composition root.
 | FRK-CNT-013 | Provider order is explicit and stable (call order); it is the documented contract for construction and startup sequencing. | Must |
 | FRK-CNT-014 | `Boot` may resolve dependencies to validate wiring and run initializers; any returned error aborts startup with a structured failure naming the provider. | Must |
 | FRK-CNT-015 | A provider that requires runtime configuration declares it through `libs/config` + `libs/validate` bindings (FRK-STR-005), so config/validation errors surface during `Register`/`Boot`, before serving. | Must |
-| FRK-CNT-016 | Providers live in the canonical layout: assembly in `internal/app`, additional providers under `internal/app/<group>` or `internal/providers/` (RVF-M1XKZ). | Should |
+| FRK-CNT-016 | Providers live in the canonical layout: assembly in `internal/app`, additional providers under `internal/app/<group>` or `internal/providers/` (RVF-CCI0N). | Should |
 
 ### 5.3 Dependency Injection & Composition
 
 | ID          | Requirement                                                       | Priority |
 | ----------- | ----------------------------------------------------------------- | -------- |
-| FRK-CNT-020 | A web provider binds the built `*web.App` (RVF-P8RK9) into the container; `main` only resolves it and calls `Run` — no wiring logic in `main`. | Must |
+| FRK-CNT-020 | A web provider binds the built `*web.App` (RVF-C4087) into the container; `main` only resolves it and calls `Run` — no wiring logic in `main`. | Must |
 | FRK-CNT-021 | Handlers and services accept their dependencies via constructor/factory parameters resolved by the container; they never reach for globals or `sync.Once` singletons. | Must |
 | FRK-CNT-022 | The container supports composing groups (e.g. all `Middleware`, all jobs) as named-order slices resolved together, without string lookups leaking into call sites. | Should |
 | FRK-CNT-023 | Configuration, storage, HTTP, pages, and embedding each ship as a provider so a provider's responsibilities have a single home. | Should |
@@ -140,19 +140,19 @@ that is built and resolved at a single, explicit composition root.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-C9WLJ                              |
 | --------- | ----------------------------------------------- |
-| [RVF-M1XKZ](./RVF-M1XKZ-app-directory-structure.md) | App Project Directory Structure Standard |
-| [RVF-P8RK9](./RVF-P8RK9-runvil-app-framework.md) | Runvil App Framework (assembly) |
-| [RVF-ZK9LQ](./RVF-ZK9LQ-layout-ui-system.md) | Layout & UI System |
-| [RVF-H3QD8](./RVF-H3QD8-http-api-pipeline.md) | HTTP & API Pipeline |
-| [RVF-L6NJ5](./RVF-L6NJ5-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
-| [RVF-2TK4X](./RVF-2TK4X-js-ts-framework-integration.md) | JS/TS Framework Integration |
-| [RVN-K2SQ7](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-K2SQ7-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
-| [RVL-X7C4M](https://github.com/runvil/libs/blob/main/docs/specs/RVL-X7C4M-configuration-loading.md) | Configuration Loading |
-| [RVL-B9TW2](https://github.com/runvil/libs/blob/main/docs/specs/RVL-B9TW2-struct-validation.md) | Struct Validation |
+| [RVF-CCI0N](./RVF-struct-CCI0N-app-directory-structure.md) | App Project Directory Structure Standard |
+| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) |
+| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) | Layout & UI System |
+| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
+| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
+| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration |
+| [RVN-6K41E](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-run-6K41E-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
+| [RVL-2X1QZ](https://github.com/runvil/libs/blob/main/docs/specs/RVL-config-2X1QZ-configuration-loading.md) | Configuration Loading |
+| [RVL-LHANF](https://github.com/runvil/libs/blob/main/docs/specs/RVL-validate-LHANF-struct-validation.md) | Struct Validation |
 
 ## 9. References
 
-- [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Meta-Framework (module architecture; libs are framework-agnostic).
+- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework (module architecture; libs are framework-agnostic).
 - Go standard library `os/signal`, `log/slog`, and constructor-injection idioms.

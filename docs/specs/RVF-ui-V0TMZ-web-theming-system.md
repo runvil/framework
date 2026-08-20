@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-5K7PZ                                   |
+| SpecID      | RVF-V0TMZ                              |
 | Title       | Runvil UI Theming System                    |
 | Status      | Draft                                       |
 | Date        | 2026-08-18                                  |
@@ -69,12 +69,12 @@ the same toggle.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-V0TMZ                              |
 | --------- | ----------------------------------------------- |
-| [RVF-HQ7XW](./RVF-HQ7XW-runvil-ui-framework.md) | Runvil UI Framework (ships this system) |
-| [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md) | Runvil Web Framework             |
-| [RVM-5F9TL](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-5F9TL-mdbind-site-builder.md) | mdbind Site Builder |
+| [RVF-0Z671](./RVF-ui-0Z671-runvil-ui-framework.md) | Runvil UI Framework (ships this system) |
+| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework             |
+| [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-builder-FX9H2-mdbind-site-builder.md) | mdbind Site Builder |
 
 ## 9. References
 
-- [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Framework initial specification.
+- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Framework initial specification.

@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-L6NJ5                                   |
+| SpecID      | RVF-0F2EB                              |
 | Title       | Server & Frontend Rendering Pipeline        |
 | Status      | Draft                                       |
 | Date        | 2026-08-19                                  |
@@ -11,15 +11,15 @@
 
 ## 1. Context
 
-The Runvil ecosystem builds **static** sites (RVF-PN41Q) and, with RVF-H3QD8,
+The Runvil ecosystem builds **static** sites (RVF-PT8OD) and, with RVF-230KF,
 can expose JSON APIs. The missing piece is **server-side rendering (SSR)**: a
-live process that renders the same `ui` components (RVF-ZK9LQ) into HTML per
+live process that renders the same `ui` components (RVF-PPUWX) into HTML per
 request, so a single monolith binary serves frontend pages and JSON APIs from
 one `net/http` listener.
 
 `web.App` is that runtime. It composes routes, middleware, pages, static
 assets, and the theme/registry shared with the SSG pipeline. Pages are either
-**static** (exported, from RVF-PN41Q's model) or **dynamic** (rendered per
+**static** (exported, from RVF-PT8OD's model) or **dynamic** (rendered per
 request); both feed the same render path so output never diverges.
 
 ## 2. Problem Statement
@@ -42,19 +42,19 @@ server-rendered frontend is the missing bridge:
 - G1 — Provide `web.App` composing routes, middleware, pages, static dirs, theme, and registry.
 - G2 — Pages render through the shared `ui` component registry + `Layout` shell.
 - G3 — Support both **static** pages (exported to files) and **dynamic** pages (rendered per request) with identical output for identical input.
-- G4 — Serve HTML, JSON (via RVF-H3QD8), and embedded assets from one handler.
+- G4 — Serve HTML, JSON (via RVF-230KF), and embedded assets from one handler.
 - G5 — Provide lifecycle helpers: `App.Run(addr)` with graceful shutdown and signal handling.
 - G6 — Allow single-binary deployment by mounting assets from an `fs.FS` (embed-friendly).
 - G7 — Reuse, not fork: the render path must be the same one the SSG uses so a page can be exported *and* served dynamically.
 
 ## 4. Non-Goals
 
-- NG1 — Hot reloading (that's the runvil `dev` command, RVN-K2SQ7).
+- NG1 — Hot reloading (that's the runvil `dev` command, RVN-6K41E).
 - NG2 — Server-side sessions or auth primitives.
-- NG3 — SPA client-side rendering or JS hydration **in this phase**; SSR output must stay JS-framework-agnostic and expose an opt-in hydration seam (FRK-SRV-040..043, RVF-2TK4X).
+- NG3 — SPA client-side rendering or JS hydration **in this phase**; SSR output must stay JS-framework-agnostic and expose an opt-in hydration seam (FRK-SRV-040..043, RVF-F2TQC).
 - NG4 — Multiple web servers / cluster management.
-- NG5 — A template DSL beyond `html/template` (see RVF-ZK9LQ).
-- NG6 — Replacing RVF-PN41Q: the SSG remains the static-export authority; `App` reuses its model.
+- NG5 — A template DSL beyond `html/template` (see RVF-PPUWX).
+- NG6 — Replacing RVF-PT8OD: the SSG remains the static-export authority; `App` reuses its model.
 
 ## 5. Requirements
 
@@ -76,7 +76,7 @@ server-rendered frontend is the missing bridge:
 | FRK-SRV-010 | `PageSpec` names a `Root` component (via the registry) and a `Layout`, mirroring the SSG `PageConfig`. | Must |
 | FRK-SRV-011 | A **dynamic** page's data comes from a per-request function `Data func(*http.Request) (any, error)` executed before render. | Must |
 | FRK-SRV-012 | A **static** page's data is fixed and renders identically to SSG output for the same component/layout/data. | Must |
-| FRK-SRV-013 | `App.Export(outDir string) ([]string, error)` writes static pages as `index.html` plus assets, identical to RVF-PN41Q semantics. | Must |
+| FRK-SRV-013 | `App.Export(outDir string) ([]string, error)` writes static pages as `index.html` plus assets, identical to RVF-PT8OD semantics. | Must |
 | FRK-SRV-014 | Render unifies through one internal `renderPage(name, data)` shared by SSR and Export; successful dynamic render equals the exported file minus dynamic data. | Must |
 | FRK-SRV-015 | A page render error returns 500 (or the error's mapped status via FRK-H3QD8-API-021). | Must |
 
@@ -102,7 +102,7 @@ server-rendered frontend is the missing bridge:
 | ID          | Requirement                                                       | Priority |
 | ----------- | ----------------------------------------------------------------- | -------- |
 | FRK-SRV-040 | SSR output must be JS-framework-agnostic: stable `data-ui-component` scope attributes, deterministic markup, no framework-specific attributes by default. | Must |
-| FRK-SRV-041 | `PageSpec` may enable props serialization (`data-props` JSON) for client mounting, off by default and JSON-compatible with the API contract (RVF-H3QD8). | Must |
+| FRK-SRV-041 | `PageSpec` may enable props serialization (`data-props` JSON) for client mounting, off by default and JSON-compatible with the API contract (RVF-230KF). | Must |
 | FRK-SRV-042 | The page render path exposes an empty-by-default script/mount injection slot so a future client layer can attach JS/TS bundles without altering server rendering. | Should |
 | FRK-SRV-043 | Client bundles shipped by a project (via `App.Static`) are served untouched; the theme-toggle stays the only inline script by default and coexists with mounted frameworks. | Must |
 
@@ -117,24 +117,24 @@ server-rendered frontend is the missing bridge:
 ## 7. Success Criteria
 
 - S1 — An app serves a dynamic page whose `Data` reflects a query param, and JSON API responses from the same port.
-- S2 — `App.Export` output for a static page byte-matches the same page rendered through RVF-PN41Q.
+- S2 — `App.Export` output for a static page byte-matches the same page rendered through RVF-PT8OD.
 - S3 — SIGINT shuts the server down gracefully (in-flight request completes).
 - S4 — A single binary embeds `site/` and serves it without external files.
 - S5 — The same `ui` component renders identically served live and exported.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-0F2EB                              |
 | --------- | ----------------------------------------------- |
-| [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md) | Runvil Web Framework (host) |
-| [RVF-H3QD8](./RVF-H3QD8-http-api-pipeline.md) | HTTP & API Pipeline |
-| [RVF-P8RK9](./RVF-P8RK9-runvil-app-framework.md) | Runvil App Framework (assembly) |
-| [RVF-PN41Q](./RVF-PN41Q-static-site-generator.md) | Static Site Generator (shared render model) |
-| [RVF-ZK9LQ](./RVF-ZK9LQ-layout-ui-system.md) | Layout & UI System (registry with `Default()`) |
-| [RVF-2TK4X](./RVF-2TK4X-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
-| [RVN-K2SQ7](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-K2SQ7-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
+| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework (host) |
+| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
+| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) |
+| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Static Site Generator (shared render model) |
+| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) | Layout & UI System (registry with `Default()`) |
+| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
+| [RVN-6K41E](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-run-6K41E-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
 
 ## 9. References
 
-- [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md) — Runvil Web Framework.
+- [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) — Runvil Web Framework.
 - Go stdlib `net/http`, `os/signal`, `context`.

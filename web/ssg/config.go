@@ -28,10 +28,16 @@ type Config struct {
 	Layouts []LayoutConfig `yaml:"layouts"`
 	// Pages are the site's output pages.
 	Pages []PageConfig `yaml:"pages"`
+	// Collections are content collections (Markdown + frontmatter).
+	Collections []CollectionConfig `yaml:"collections"`
 	// Assets maps output paths (e.g. "favicon.ico") to file contents.
 	Assets map[string]string `yaml:"assets"`
 	// Data is the site-wide data merged into every page's data value.
 	Data map[string]any `yaml:"data"`
+	// IncludeDrafts includes draft pages in build (dev only).
+	IncludeDrafts bool `yaml:"include_drafts"`
+	// IncludeFuture includes future-dated pages in build (dev only).
+	IncludeFuture bool `yaml:"include_future"`
 }
 
 // ThemeConfig configures the theming system for a declarative site.
@@ -81,6 +87,8 @@ func (c *Config) Site() *Site {
 		"html": func(v any) template.HTML {
 			return template.HTML(fmt.Sprint(v))
 		},
+		// markdown renders a Markdown string to trusted HTML.
+		"markdown": markdownFunc,
 	}).Registry(ui.Default())
 	if c.Theme != nil {
 		s.Asset("assets/theme.css", ui.ThemeModeVarsCSS+"\n"+ui.ThemeToggleCSS)
@@ -96,9 +104,6 @@ func (c *Config) Site() *Site {
 			}
 			sl, err := LayoutFromUI(l.Name, *ul)
 			if err != nil {
-				// Config.Site has no error path; register a poisoned layout
-				// so the first build fails loudly instead of rendering wrong
-				// output from an invalid ui shell.
 				s.Layout(Layout{Name: l.Name, Body: "{{if}}"})
 				continue
 			}
@@ -108,7 +113,41 @@ func (c *Config) Site() *Site {
 		}
 		s.Layout(Layout{Name: l.Name, Body: l.Body, Style: l.Style})
 	}
+
+	// Build collections
+	collections := make(map[string]*Collection)
+	collectionData := make(map[string]any)
+	for _, cc := range c.Collections {
+		col, err := BuildCollection(cc, ".")
+		if err != nil {
+			panic(fmt.Sprintf("collection %s: %v", cc.Name, err))
+		}
+		col.FilterDrafts(c.IncludeDrafts)
+		col.FilterFuture(c.IncludeFuture)
+		collections[cc.Name] = col
+		// Build collection data for templates
+		pagesData := make([]map[string]any, len(col.Pages))
+		for i, p := range col.Pages {
+			outputPath := col.GenerateOutputPath(p)
+			pagesData[i] = map[string]any{
+				"Title":       p.Config.Title,
+				"Date":        p.RawDate,
+				"Permalink":   outputPath,
+				"Data":        p.Config.Extra,
+				"Content":     p.Content,
+				"Draft":       p.Config.Draft,
+				"Tags":        p.Config.Tags,
+				"Description": p.Config.Description,
+			}
+		}
+		collectionData[cc.Name] = pagesData
+	}
+
 	base := c.pageData()
+	if len(collectionData) > 0 {
+		base["Collections"] = collectionData
+	}
+
 	for _, p := range c.Pages {
 		s.Page(Page{Path: p.Path, Title: p.Title, Layout: p.Layout, Root: p.Root, Data: merge(base, p.Data)})
 	}
@@ -139,6 +178,8 @@ func (c *Config) pageData() map[string]any {
 	if c.Theme != nil {
 		data["Theme"] = c.theme()
 	}
+	data["IncludeDrafts"] = c.IncludeDrafts
+	data["IncludeFuture"] = c.IncludeFuture
 	return data
 }
 

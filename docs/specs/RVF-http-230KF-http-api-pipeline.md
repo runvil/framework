@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-H3QD8                                   |
+| SpecID      | RVF-230KF                              |
 | Title       | HTTP & API Pipeline                         |
 | Status      | Draft                                       |
 | Date        | 2026-08-19                                  |
@@ -11,7 +11,7 @@
 
 ## 1. Context
 
-The `web` package (RVF-8G3WQ) provides routing, template rendering, and static
+The `web` package (RVF-M07QS) provides routing, template rendering, and static
 export on `net/http`. To power fullstack monolith apps, it needs an **HTTP &
 API layer**: a middleware chain for cross-cutting concerns (auth, logging,
 recovery), a JSON contract for API endpoints, structured error mapping, and
@@ -93,7 +93,7 @@ Runvil apps. A shared pipeline fixes this once in the framework.
 | FRK-API-030 | Route params (`{name}`) remain available via `web.Params` in handlers. | Must |
 | FRK-API-031 | Query strings remain readable via `r.URL.Query()`; no binding layer in this phase. | Must |
 | FRK-API-032 | Provide a `Group(prefix string)` helper returning a scoped router sharing the parent's middleware, for versioned APIs (`/api/v1`). | Should |
-| FRK-API-040 | The JSON contract must be stable and documented (field naming, error shape), so client-side frameworks and hydration payloads (`data-props`, RVF-2TK4X) can consume the same shape. | Must |
+| FRK-API-040 | The JSON contract must be stable and documented (field naming, error shape), so client-side frameworks and hydration payloads (`data-props`, RVF-F2TQC) can consume the same shape. | Must |
 
 ## 6. Non-Functional Requirements
 
@@ -108,20 +108,20 @@ Runvil apps. A shared pipeline fixes this once in the framework.
 - S1 — A test app mounts middleware, a `/api/*` JSON endpoint, and a validating DTO; bad input returns 400 with a stable body.
 - S2 — A panicking handler returns 500 through `RecoverMiddleware` and the process does not crash.
 - S3 — `DecodeAndValidate` rejects a malformed body and a validation failure as distinct, wrapped errors.
-- S4 — Exported static pages from RVF-PN41Q build unchanged when this pipeline is linked.
+- S4 — Exported static pages from RVF-PT8OD build unchanged when this pipeline is linked.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-230KF                              |
 | --------- | ----------------------------------------------- |
-| [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md) | Runvil Web Framework (host) |
-| [RVF-L6NJ5](./RVF-L6NJ5-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
-| [RVF-P8RK9](./RVF-P8RK9-runvil-app-framework.md) | Runvil App Framework (monolith assembly) |
-| [RVF-2TK4X](./RVF-2TK4X-js-ts-framework-integration.md) | JS/TS Framework Integration (shared JSON/data-props contract) |
-| [RVL-B9TW2](https://github.com/runvil/libs/blob/main/docs/specs/RVL-B9TW2-struct-validation.md) | Struct Validation (dependency) |
-| [RVL-CHBZ4](https://github.com/runvil/libs/blob/main/docs/specs/RVL-CHBZ4-errors-exit-codes.md) | Core Errors & Exit Codes |
+| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework (host) |
+| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
+| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (monolith assembly) |
+| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (shared JSON/data-props contract) |
+| [RVL-LHANF](https://github.com/runvil/libs/blob/main/docs/specs/RVL-validate-LHANF-struct-validation.md) | Struct Validation (dependency) |
+| [RVL-W0J2X](https://github.com/runvil/libs/blob/main/docs/specs/RVL-core-W0J2X-errors-exit-codes.md) | Core Errors & Exit Codes |
 
 ## 9. References
 
-- [RVF-ZK9LQ](./RVF-ZK9LQ-layout-ui-system.md) — Layout & UI System (component registry the SSR layer uses).
-- [RVF-PN41Q](./RVF-PN41Q-static-site-generator.md) — Static Site Generator.
+- [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) — Layout & UI System (component registry the SSR layer uses).
+- [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) — Static Site Generator.

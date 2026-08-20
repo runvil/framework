@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-PN41Q                                   |
+| SpecID      | RVF-PT8OD                              |
 | Title       | Runvil Static Site Generator                |
 | Status      | Draft                                       |
 | Date        | 2026-08-18                                  |
@@ -40,7 +40,7 @@ Every consumer reinvents the same composition and asset-collection logic.
 ## 4. Non-Goals
 
 - NG1 — Markdown authoring, collections, or content pipelines (owned by mdbind).
-- NG2 — Client-side hydration, islands, or JavaScript frameworks **in this phase**; exported pages must remain hydratable-ready (FRK-SSG-022..024, RVF-2TK4X) so JS/TS frameworks can be layered on without re-export.
+- NG2 — Client-side hydration, islands, or JavaScript frameworks **in this phase**; exported pages must remain hydratable-ready (FRK-SSG-022..024, RVF-F2TQC) so JS/TS frameworks can be layered on without re-export.
 - NG3 — Runtime data fetching; all data is provided at build time.
 
 ## 5. Requirements
@@ -66,7 +66,7 @@ Every consumer reinvents the same composition and asset-collection logic.
 | FRK-SSG-017 | Provide a loader for project component files (`ui/components/*.ui.html`) that registers each under its base name with scoped CSS, so custom components are referenced by name from config. | Must |
 | FRK-SSG-018 | Config must remain markup-free: pages are short entries (`path`, `layout`, `root`, `data`) and widget composition lives in component files/Go — never in `runvil.yaml`. | Must |
 | FRK-SSG-019 | The site theme/registry resolution is shared with SSR: same `ui.Theme` tokens and component registry; identical input stays byte-identical across build and serve. | Must |
-| FRK-SSG-020 | SSG is one mode of the shared page model (RVF-L6NJ5): a **static** page exported by the SSG renders through the same component/layout render path as a **dynamic** page served per request. | Must |
+| FRK-SSG-020 | SSG is one mode of the shared page model (RVF-0F2EB): a **static** page exported by the SSG renders through the same component/layout render path as a **dynamic** page served per request. | Must |
 | FRK-SSG-021 | Any static page is also servable as a dynamic page by `web.App` with zero markup/texture change, and vice-versa for fixed-data pages. | Must |
 | FRK-SSG-022 | Exported pages are hydratable-ready: stable `data-ui-component` scope attributes, deterministic markup, and props optionally serialized as `data-props` JSON (opt-in) for client mounting — without adding any `<script>` to default output. | Must |
 | FRK-SSG-023 | Component/layout CSS is exported separately and must never depend on runtime JavaScript; no framework-specific attributes are emitted by default. | Must |
@@ -88,14 +88,14 @@ Every consumer reinvents the same composition and asset-collection logic.
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-PT8OD                              |
 | --------- | ----------------------------------------------- |
-| [RVF-8G3WQ](./RVF-8G3WQ-runvil-web-framework.md) | Runvil Web Framework             |
-| [RVF-5K7PZ](./RVF-5K7PZ-web-theming-system.md) | Runvil Web Theming System       |
-| [RVF-ZK9LQ](./RVF-ZK9LQ-layout-ui-system.md) | Layout & UI System (registry + Go-native components) |
-| [RVF-L6NJ5](./RVF-L6NJ5-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline (shared page model) |
-| [RVF-2TK4X](./RVF-2TK4X-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
+| [RVF-M07QS](./RVF-web-M07QS-runvil-web-framework.md) | Runvil Web Framework             |
+| [RVF-V0TMZ](./RVF-ui-V0TMZ-web-theming-system.md) | Runvil Web Theming System       |
+| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) | Layout & UI System (registry + Go-native components) |
+| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline (shared page model) |
+| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (future bridge) |
 
 ## 9. References
 
-- [RVM-5F9TL](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-5F9TL-mdbind-site-builder.md) — mdbind Site Builder (markdown-driven counterpart).
+- [RVM-FX9H2](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-builder-FX9H2-mdbind-site-builder.md) — mdbind Site Builder (markdown-driven counterpart).

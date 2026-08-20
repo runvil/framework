@@ -2,7 +2,7 @@
 
 | Field       | Value                                       |
 | ----------- | ------------------------------------------- |
-| SpecID      | RVF-M1XKZ                                   |
+| SpecID      | RVF-CCI0N                              |
 | Title       | App Project Directory Structure Standard    |
 | Status      | Draft                                       |
 | Date        | 2026-08-19                                  |
@@ -12,8 +12,8 @@
 ## 1. Context
 
 Runvil applications are fullstack monoliths: one binary serves server-rendered
-pages (RVF-L6NJ5), JSON APIs (RVF-H3QD8), static sites (RVF-PN41Q), and
-embedded assets composed through `web.App` (RVF-P8RK9). Modern fullstack
+pages (RVF-0F2EB), JSON APIs (RVF-230KF), static sites (RVF-PT8OD), and
+embedded assets composed through `web.App` (RVF-C4087). Modern fullstack
 frameworks define a canonical project layout — Laravel's `app/`, `config/`,
 `resources/`, Astro/SvelteKit's `src/` — so new projects start conventional and
 tooling behaves predictably. Runvil defines the same kind of standard for Go,
@@ -22,7 +22,7 @@ then keeps it a *convention* rather than a hard rule.
 Today `runvil new` emits only a bare CLI skeleton and earlier example projects
 predate any layout standard. Without a canonical structure every app invents
 its own arrangement, divergence grows, and `runvil run`/`dev`/`init`
-(RVN-K2SQ7, RVN-AD5MP, RVN-MPLQ4) lose the predictability they depend on.
+(RVN-6K41E, RVN-RD3WS, RVN-1QGI2) lose the predictability they depend on.
 
 ## 2. Problem Statement
 
@@ -44,7 +44,7 @@ gap — provided it stays a default users may reorganize, never a prison.
 - G4 — Keep every project single-binary friendly: entry point, internal
   packages, UI sources, and static assets all embed via stdlib `embed`.
 - G5 — Preserve existing shape detection (app/site/book) and the static
-  book/site pipeline (RVN-MPLQ4) unchanged.
+  book/site pipeline (RVN-1QGI2) unchanged.
 
 ## 4. Non-Goals
 
@@ -54,7 +54,7 @@ gap — provided it stays a default users may reorganize, never a prison.
   the single-process monolith.
 - NG3 — Reflection-driven or auto-discovery assembly; paths are declared, not
   guessed beyond stable markers.
-- NG4 — Client framework specifics; the JS/TS bridge (RVF-2TK4X) covers how
+- NG4 — Client framework specifics; the JS/TS bridge (RVF-F2TQC) covers how
   compiled frontends attach, not where they must live.
 
 ## 5. Requirements
@@ -93,10 +93,10 @@ A `runvil new <name>` app project follows this layout by default:
 | FRK-STR-002 | The entry point is `cmd/<name>/main.go` (a root `main.go` is allowed for single-command apps); it must stay thin — load config, build the app, call `App.Run` — never host business logic. | Must |
 | FRK-STR-003 | App logic lives in `internal/` packages by default; anything importable by the outside world belongs under `pkg/` and is the project's choice. | Must |
 | FRK-STR-004 | Full assembly composes in `internal/app` (e.g. `app.New(cfg, store) *web.App`); `cmd` only calls it. | Should |
-| FRK-STR-005 | Configuration is a typed struct in `internal/config`, loaded through `libs/config` (RVL-X7C4M) and validated through `libs/validate` (RVL-B9TW2); the config file is `runvil.yaml` at the repo root. | Must |
-| FRK-STR-006 | Frontend sources (components, layouts, pages, theme, styles) live under `web/` by default and register into the app at assembly time; built-in components come from the `ui` registry (RVF-ZK9LQ). | Must |
+| FRK-STR-005 | Configuration is a typed struct in `internal/config`, loaded through `libs/config` (RVL-2X1QZ) and validated through `libs/validate` (RVL-LHANF); the config file is `runvil.yaml` at the repo root. | Must |
+| FRK-STR-006 | Frontend sources (components, layouts, pages, theme, styles) live under `web/` by default and register into the app at assembly time; built-in components come from the `ui` registry (RVF-PPUWX). | Must |
 | FRK-STR-007 | Static assets served as-is live under `public/` and are embedded via `//go:embed public/...` into the binary. | Must |
-| FRK-STR-008 | An optional book source is `manuscript/` (RVN-MPLQ4); an optional exported SSG site is `site/`. Apps may serve either through `App.Static`. | Should |
+| FRK-STR-008 | An optional book source is `manuscript/` (RVN-1QGI2); an optional exported SSG site is `site/`. Apps may serve either through `App.Static`. | Should |
 | FRK-STR-009 | The layout is a convention, not a contract: no framework or devtool code may hardcode these paths beyond the stable markers in FRK-STR-030 through FRK-STR-032. | Must |
 | FRK-STR-010 | A project may relocate any directory by declaring the move centrally in `runvil.yaml` (e.g. `project.dirs.web: src/web`); un-declared relocations are the author's responsibility. | Should |
 
@@ -106,15 +106,15 @@ A `runvil new <name>` app project follows this layout by default:
 | ----------- | ----------------------------------------------------------------- | -------- |
 | FRK-STR-020 | `runvil new <name>` scaffolds the canonical app layout (FRK-STR-001) with a runnable hello page, one JSON endpoint, and `runvil.yaml`; it builds and runs without modification. | Must |
 | FRK-STR-021 | `runvil init` scaffolds the site/book layout: `manuscript/` plus `runvil.yaml` with shared fields (title, input, output, theme, optional `ssg:`). | Must |
-| FRK-STR-022 | Scaffolded projects must work with `runvil run`, `runvil dev`, `runvil build`, and `runvil serve` exactly as documented (RVN-K2SQ7). | Must |
-| FRK-STR-023 | Scaffolding keeps its safety contract: refuse non-empty targets and invalid names with exit code 2, list created files deterministically (RVN-AD5MP). | Must |
-| FRK-STR-024 | Scaffolded output pins the framework/libs versions the devtool was built with (RVN-AD5MP RND-SC-006). | Must |
+| FRK-STR-022 | Scaffolded projects must work with `runvil run`, `runvil dev`, `runvil build`, and `runvil serve` exactly as documented (RVN-6K41E). | Must |
+| FRK-STR-023 | Scaffolding keeps its safety contract: refuse non-empty targets and invalid names with exit code 2, list created files deterministically (RVN-RD3WS). | Must |
+| FRK-STR-024 | Scaffolded output pins the framework/libs versions the devtool was built with (RVN-RD3WS RND-SC-006). | Must |
 
 ### 5.3 Discovery & Tooling
 
 | ID          | Requirement                                                       | Priority |
 | ----------- | ----------------------------------------------------------------- | -------- |
-| FRK-STR-030 | Shape detection (RVN-K2SQ7 RND-SHD-001..004) stays marker-based: `main.go`/`cmd/*` with `func main` ⇒ app; `runvil.yaml#ssg:` or `ssg.yaml` ⇒ site; `manuscript/` ⇒ book. It does not probe the canonical layout. | Must |
+| FRK-STR-030 | Shape detection (RVN-6K41E RND-SHD-001..004) stays marker-based: `main.go`/`cmd/*` with `func main` ⇒ app; `runvil.yaml#ssg:` or `ssg.yaml` ⇒ site; `manuscript/` ⇒ book. It does not probe the canonical layout. | Must |
 | FRK-STR-031 | The `runvil dev` watched set derives from the canonical layout — `**/*.go`, `web/**`, `public/**`, `runvil.yaml`, `ssg.yaml`, `manuscript/**` — with a `runvil.yaml` override for relocated dirs. | Should |
 | FRK-STR-032 | `runvil info` reports the detected kind and, when resolved, the effective directories for `cmd`, `internal`, `web`, `public`, and `manuscript`. | Should |
 | FRK-STR-033 | Applications resolve layout directories only through the declared locations (defaults or `runvil.yaml` overrides); nothing reflects on the filesystem beyond markers and declared paths. | Must |
@@ -138,22 +138,22 @@ A `runvil new <name>` app project follows this layout by default:
 
 ## 8. Related Specifications
 
-| SpecID    | Title                                           |
+| SpecID      | RVF-CCI0N                              |
 | --------- | ----------------------------------------------- |
-| [RVF-P8RK9](./RVF-P8RK9-runvil-app-framework.md) | Runvil App Framework (assembly) |
-| [RVF-D1CNT](./RVF-D1CNT-app-container-service-providers.md) | App Container & Service Providers |
-| [RVF-ZK9LQ](./RVF-ZK9LQ-layout-ui-system.md) | Layout & UI System |
-| [RVF-PN41Q](./RVF-PN41Q-static-site-generator.md) | Static Site Generator |
-| [RVF-L6NJ5](./RVF-L6NJ5-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
-| [RVF-H3QD8](./RVF-H3QD8-http-api-pipeline.md) | HTTP & API Pipeline |
-| [RVF-2TK4X](./RVF-2TK4X-js-ts-framework-integration.md) | JS/TS Framework Integration (client assets) |
-| [RVN-K2SQ7](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-K2SQ7-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
-| [RVN-AD5MP](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-AD5MP-project-scaffolding.md) | Project Scaffolding |
-| [RVN-MPLQ4](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-MPLQ4-project-building.md) | Project Building |
-| [RVL-X7C4M](https://github.com/runvil/libs/blob/main/docs/specs/RVL-X7C4M-configuration-loading.md) | Configuration Loading |
-| [RVL-B9TW2](https://github.com/runvil/libs/blob/main/docs/specs/RVL-B9TW2-struct-validation.md) | Struct Validation |
+| [RVF-C4087](./RVF-app-C4087-runvil-app-framework.md) | Runvil App Framework (assembly) |
+| [RVF-C9WLJ](./RVF-di-C9WLJ-app-container-service-providers.md) | App Container & Service Providers |
+| [RVF-PPUWX](./RVF-ui-PPUWX-layout-ui-system.md) | Layout & UI System |
+| [RVF-PT8OD](./RVF-ssg-PT8OD-static-site-generator.md) | Static Site Generator |
+| [RVF-0F2EB](./RVF-web-0F2EB-server-frontend-pipeline.md) | Server & Frontend Rendering Pipeline |
+| [RVF-230KF](./RVF-http-230KF-http-api-pipeline.md) | HTTP & API Pipeline |
+| [RVF-F2TQC](./RVF-js-F2TQC-js-ts-framework-integration.md) | JS/TS Framework Integration (client assets) |
+| [RVN-6K41E](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-run-6K41E-runvil-run-dev-deploy.md) | runvil run/dev/deploy |
+| [RVN-RD3WS](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-scaffold-RD3WS-project-scaffolding.md) | Project Scaffolding |
+| [RVN-1QGI2](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-build-1QGI2-project-building.md) | Project Building |
+| [RVL-2X1QZ](https://github.com/runvil/libs/blob/main/docs/specs/RVL-config-2X1QZ-configuration-loading.md) | Configuration Loading |
+| [RVL-LHANF](https://github.com/runvil/libs/blob/main/docs/specs/RVL-validate-LHANF-struct-validation.md) | Struct Validation |
 
 ## 9. References
 
-- [RVF-QOFJK](./RVF-QOFJK-runvil-meta-framework.md) — Runvil Meta-Framework (module architecture).
+- [RVF-CMBZJ](./RVF-meta-CMBZJ-runvil-meta-framework.md) — Runvil Meta-Framework (module architecture).
 - Go standard library `embed`, `internal/`, and `cmd/` project-layout idioms.
